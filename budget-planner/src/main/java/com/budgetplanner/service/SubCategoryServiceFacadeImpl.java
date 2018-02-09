@@ -37,6 +37,7 @@ public class SubCategoryServiceFacadeImpl implements SubCategoryService {
 
 	private void validate(SubCategoryDTO subCategoryDTO) {
 		if (subCategoryDTO == null || subCategoryDTO.getId() == null || subCategoryDTO.getName() == null) {
+			System.out.println(erro);
 			throw new IllegalArgumentException(erro);
 		}
 		if (subCategoryDTO.getId() < 0 || subCategoryDTO.getId() > 200) {
