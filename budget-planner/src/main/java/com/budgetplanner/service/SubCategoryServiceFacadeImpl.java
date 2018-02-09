@@ -17,7 +17,7 @@ public class SubCategoryServiceFacadeImpl implements SubCategoryService {
 	@Autowired
 	private SubCategoryRepository subCategoryRepository;
 
-	@Value("${erro}")
+	@Value("${erro.subcategory.null}")
 	private String erro;
 
 	
