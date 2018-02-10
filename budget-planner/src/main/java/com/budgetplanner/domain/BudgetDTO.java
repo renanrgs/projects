@@ -2,17 +2,16 @@ package com.budgetplanner.domain;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 public class BudgetDTO {
 
 	private Integer month;
 	private Integer year;
 	private LocalDate period;
-	private Map<Integer, List<CategoryDTO>> incomes;
-	private Map<Integer, List<CategoryDTO>> expenses;
+	private List<CategoryDTO> incomes;
+	private List<CategoryDTO> expenses;
 
-	public BudgetDTO(Map<Integer, List<CategoryDTO>> incomes, Map<Integer, List<CategoryDTO>> expenses) {
+	public BudgetDTO(List<CategoryDTO> incomes, List<CategoryDTO> expenses) {
 		super();
 		LocalDate period = LocalDate.now();
 		this.month = period.getMonthValue();
@@ -38,19 +37,19 @@ public class BudgetDTO {
 		this.period = period;
 	}
 
-	public Map<Integer, List<CategoryDTO>> getIncomes() {
+	public List<CategoryDTO> getIncomes() {
 		return incomes;
 	}
 
-	public void setIncomes(Map<Integer, List<CategoryDTO>> incomes) {
+	public void setIncomes(List<CategoryDTO> incomes) {
 		this.incomes = incomes;
 	}
 
-	public Map<Integer, List<CategoryDTO>> getExpenses() {
+	public List<CategoryDTO> getExpenses() {
 		return expenses;
 	}
 
-	public void setExpenses(Map<Integer, List<CategoryDTO>> expenses) {
+	public void setExpenses(List<CategoryDTO> expenses) {
 		this.expenses = expenses;
 	}
 

@@ -8,6 +8,7 @@ import static org.mockito.Mockito.doAnswer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.invocation.InvocationOnMock;
@@ -31,9 +32,17 @@ public class BudgetUTest {
 	@Autowired
 	private BudgetService budgetService;
 
+	List<BudgetDTO> budgets;
+	
+	@Before
+	public void setUp() {
+		budgets = new ArrayList<>();
+		budgets.add(validBudget());
+	}
+	
 	@Test
 	public void insertValidBudget() {
-		final List<BudgetDTO> budgets = new ArrayList<>();
+		//final List<BudgetDTO> budgets = new ArrayList<>();
 		doAnswer(new Answer<List<BudgetDTO>>() {
 			@Override
 			public List<BudgetDTO> answer(InvocationOnMock invocation) throws Throwable {
@@ -43,7 +52,7 @@ public class BudgetUTest {
 			}
 		}).when(budgetRepository).insert(validBudget());
 		budgetService.insert(validBudget());
-		assertThat(budgets.size(), equalTo(1));
+		assertThat(budgets.size(), equalTo(2));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

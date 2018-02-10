@@ -36,4 +36,9 @@ public class SubCategoryForTestsRepository {
 		return new SubCategoryDTO(201, "test", 0.0);
 
 	}
+
+	public static SubCategoryDTO netSalary() {
+		return new SubCategoryDTO(4, "Net salary", 7500.0);
+	}
+
 }
