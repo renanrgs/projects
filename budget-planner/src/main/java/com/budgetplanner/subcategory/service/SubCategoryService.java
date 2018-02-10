@@ -1,4 +1,4 @@
-package com.budgetplanner.service;
+package com.budgetplanner.subcategory.service;
 
 import com.budgetplanner.domain.SubCategoryDTO;
 

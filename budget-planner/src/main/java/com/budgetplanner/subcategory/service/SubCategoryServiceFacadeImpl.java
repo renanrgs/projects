@@ -1,8 +1,9 @@
-package com.budgetplanner.service;
+package com.budgetplanner.subcategory.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.budgetplanner.domain.SubCategoryDTO;
@@ -14,6 +15,19 @@ public class SubCategoryServiceFacadeImpl implements SubCategoryService {
 	@Autowired
 	private SubCategoryRepository subCategoryRepository;
 
+	@Value("${erro.subcategory.null}")
+	private String erro;
+
+	
+	
+	public String getErro() {
+		return erro;
+	}
+
+	public void setErro(String erro) {
+		this.erro = erro;
+	}
+
 	public Boolean add(SubCategoryDTO subCategoryDTO) {
 		validate(subCategoryDTO);
 		return subCategoryRepository.add(subCategoryDTO);
@@ -21,10 +35,11 @@ public class SubCategoryServiceFacadeImpl implements SubCategoryService {
 
 	private void validate(SubCategoryDTO subCategoryDTO) {
 		if (subCategoryDTO == null || subCategoryDTO.getId() == null || subCategoryDTO.getName() == null) {
-			throw new IllegalArgumentException();
+			System.out.println(erro);
+			throw new IllegalArgumentException(erro);
 		}
-		if(subCategoryDTO.getId() < 0 || subCategoryDTO.getId() > 200) {
-			throw new IllegalArgumentException();
+		if (subCategoryDTO.getId() < 0 || subCategoryDTO.getId() > 200) {
+			throw new IllegalArgumentException(erro);
 		}
 	}
 
