@@ -22,8 +22,9 @@ public class BalanceServiceUTest {
 	
 	@Test
 	public void givenOneValidBudgetReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculate(validBudget());
+		BalanceDTO balanceDTO = balanceService.calculateTotal(validBudget());
 		assertThat(balanceDTO.getAmount(), equalTo(5400.0));
 	}
-
+	
+		
 }

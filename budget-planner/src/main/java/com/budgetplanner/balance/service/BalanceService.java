@@ -5,6 +5,6 @@ import com.budgetplanner.domain.BudgetDTO;
 
 public interface BalanceService {
 
-	BalanceDTO calculate(BudgetDTO budgetDTO);
+	BalanceDTO calculateTotal(BudgetDTO budgetDTO);
 
 }

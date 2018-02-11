@@ -1,5 +1,6 @@
 package com.budgetplanner.balance.service;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
@@ -13,26 +14,18 @@ import com.budgetplanner.domain.SubCategoryDTO;
 public class BalanceServiceImpl implements BalanceService {
 
 	@Override
-	public BalanceDTO calculate(BudgetDTO budget) {
+	public BalanceDTO calculateTotal(BudgetDTO budget) {
 		BalanceDTO balance = new BalanceDTO(budget);
-		Double totalIncome = calculateTotalIncome(budget);
-		Double totalExpense = calculateTotalExpense(budget);
+		Double totalIncome = calculateTotal(budget.getIncome().getIncomeCategories());
+		Double totalExpense = calculateTotal(budget.getExpense().getCategories());
 		balance.setTotalIncome(totalIncome);
 		balance.setTotalExpense(totalExpense);
 		balance.setAmount(totalIncome - totalExpense);
 		return balance;
 	}
 
-	private Double calculateTotalIncome(BudgetDTO budget) {
-		Stream<CategoryDTO> categoryStream = budget.getIncome().getIncomeCategories().stream();
-		Stream<SubCategoryDTO> subCategoryStream = categoryStream.flatMap(cat -> cat.getSubCategories().stream());
-		return subCategoryStream.reduce(0.0, (acc, subCategory) -> acc + subCategory.getAmount(),
-				(amount1, amount2) -> amount1 + amount2);
-	}
-
-	private Double calculateTotalExpense(BudgetDTO budget) {
-		Stream<CategoryDTO> categoryStream = budget.getExpense().getCategories().stream();
-		Stream<SubCategoryDTO> subCategoryStream = categoryStream.flatMap(cat -> cat.getSubCategories().stream());
+	private Double calculateTotal(List<CategoryDTO> category) {
+		Stream<SubCategoryDTO> subCategoryStream = category.stream().flatMap(cat -> cat.getSubCategories().stream());
 		return subCategoryStream.reduce(0.0, (acc, subCategory) -> acc + subCategory.getAmount(),
 				(amount1, amount2) -> amount1 + amount2);
 	}
