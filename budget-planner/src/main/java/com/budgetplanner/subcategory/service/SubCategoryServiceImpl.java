@@ -10,7 +10,7 @@ import com.budgetplanner.domain.SubCategoryDTO;
 import com.budgetplanner.subcategory.repository.SubCategoryRepository;
 
 @Service
-public class SubCategoryServiceFacadeImpl implements SubCategoryService {
+public class SubCategoryServiceImpl implements SubCategoryService {
 
 	@Autowired
 	private SubCategoryRepository subCategoryRepository;
