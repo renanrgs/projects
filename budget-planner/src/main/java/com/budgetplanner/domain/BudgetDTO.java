@@ -1,24 +1,25 @@
 package com.budgetplanner.domain;
 
 import java.time.LocalDate;
-import java.util.List;
+
+import com.budgetplanner.commontests.budget.ExpenseDTO;
 
 public class BudgetDTO {
 
 	private Integer month;
 	private Integer year;
 	private LocalDate period;
-	private List<CategoryDTO> incomes;
-	private List<CategoryDTO> expenses;
+	IncomeDTO income;
+	ExpenseDTO expense;
 
-	public BudgetDTO(List<CategoryDTO> incomes, List<CategoryDTO> expenses) {
+	public BudgetDTO(IncomeDTO income, ExpenseDTO expense) {
 		super();
 		LocalDate period = LocalDate.now();
 		this.month = period.getMonthValue();
 		this.year = period.getYear();
 		this.period = period;
-		this.incomes = incomes;
-		this.expenses = expenses;
+		this.income = income;
+		this.expense = expense;
 	}
 
 	public Integer getMonth() {
@@ -37,20 +38,20 @@ public class BudgetDTO {
 		this.period = period;
 	}
 
-	public List<CategoryDTO> getIncomes() {
-		return incomes;
+	public ExpenseDTO getExpense() {
+		return expense;
 	}
 
-	public void setIncomes(List<CategoryDTO> incomes) {
-		this.incomes = incomes;
+	public void setExpense(ExpenseDTO expense) {
+		this.expense = expense;
 	}
 
-	public List<CategoryDTO> getExpenses() {
-		return expenses;
+	public IncomeDTO getIncome() {
+		return income;
 	}
 
-	public void setExpenses(List<CategoryDTO> expenses) {
-		this.expenses = expenses;
+	public void setIncome(IncomeDTO income) {
+		this.income = income;
 	}
 
 	@Override

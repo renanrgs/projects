@@ -2,17 +2,21 @@ package com.budgetplanner.domain;
 
 import java.util.List;
 
+import com.budgetplanner.category.constants.TypeCategory;
+
 public class CategoryDTO {
 
 	private Integer id;
 	private String name;
 	private List<SubCategoryDTO> subCategories;
+	private TypeCategory typeCategory;
 
-	public CategoryDTO(Integer id, String name, List<SubCategoryDTO> subCategories) {
+	public CategoryDTO(Integer id, String name, List<SubCategoryDTO> subCategories, TypeCategory typeCategory) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.subCategories = subCategories;
+		this.typeCategory = typeCategory;
 	}
 
 	public Integer getId() {
@@ -37,6 +41,14 @@ public class CategoryDTO {
 
 	public void setSubCategories(List<SubCategoryDTO> subCategories) {
 		this.subCategories = subCategories;
+	}
+
+	public TypeCategory getTypeCategory() {
+		return typeCategory;
+	}
+
+	public void setTypeCategory(TypeCategory typeCategory) {
+		this.typeCategory = typeCategory;
 	}
 
 	@Override

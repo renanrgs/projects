@@ -19,7 +19,7 @@ public class BudgetServiceImpl implements BudgetService {
 	}
 
 	private void validate(BudgetDTO budget) {
-		if(budget == null || budget.getIncomes() == null || budget.getIncomes().isEmpty()) throw new IllegalArgumentException();
+		if(budget == null || budget.getIncome() == null || budget.getIncome().getIncomeCategories().isEmpty()) throw new IllegalArgumentException();
 	}
 
 }
