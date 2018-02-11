@@ -1,10 +1,10 @@
 package com.budgetplanner.category.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.budgetplanner.domain.CategoryDTO;
 
-@Service
+@Repository
 public class CategoryRepositoryImpl implements CategoryRepository {
 
 	@Override

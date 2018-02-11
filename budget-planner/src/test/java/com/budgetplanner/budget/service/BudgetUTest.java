@@ -32,17 +32,17 @@ public class BudgetUTest {
 	@Autowired
 	private BudgetService budgetService;
 
-	List<BudgetDTO> budgets;
-	
+	private List<BudgetDTO> budgets;
+
 	@Before
 	public void setUp() {
 		budgets = new ArrayList<>();
 		budgets.add(validBudget());
 	}
-	
+
 	@Test
 	public void insertValidBudget() {
-		//final List<BudgetDTO> budgets = new ArrayList<>();
+		// final List<BudgetDTO> budgets = new ArrayList<>();
 		doAnswer(new Answer<List<BudgetDTO>>() {
 			@Override
 			public List<BudgetDTO> answer(InvocationOnMock invocation) throws Throwable {

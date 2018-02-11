@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.budgetplanner.domain.SubCategoryDTO;
 
 @Repository
-public class SubCategoryRespositoryImpl implements SubCategoryRepository {
+public class SubCategoryRepositoryImpl implements SubCategoryRepository {
 
 	public Boolean add(SubCategoryDTO subCategoryDTO) {
 		return SUBCATEGORY_DATABASE.add(subCategoryDTO);

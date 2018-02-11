@@ -13,7 +13,6 @@ public class CategoryForTestsService {
 	public static CategoryDTO housing() {
 		List<SubCategoryDTO> subCategories = Arrays.asList(electricity());
 		CategoryDTO categoryDTO = new CategoryDTO(1, "housing", subCategories, TypeCategory.EXPENSE);
-		
 		return categoryDTO;
 	}
 
