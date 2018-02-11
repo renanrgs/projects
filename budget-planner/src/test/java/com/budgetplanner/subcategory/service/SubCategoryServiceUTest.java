@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.service.SubCategoryService;
 import com.budgetplanner.subcategory.repository.SubCategoryRepository;
+import com.budgetplanner.subcategory.service.SubCategoryService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

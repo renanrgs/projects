@@ -13,8 +13,14 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryRepository categoryRepository;
 
 	@Override
-	public CategoryDTO add(CategoryDTO housing) {
+	public CategoryDTO add(CategoryDTO categoryDTO) {
+		validate(categoryDTO);
 		return categoryRepository.add();
+	}
+
+	private void validate(CategoryDTO categoryDTO) {
+		if (categoryDTO == null || categoryDTO.getSubCategories() == null || categoryDTO.getSubCategories().isEmpty())
+			throw new IllegalArgumentException();
 	}
 
 }
