@@ -1,6 +1,8 @@
 package com.budgetplanner.balance.service;
 
 import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudget;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,16 +16,14 @@ import com.budgetplanner.domain.BalanceDTO;
 @SpringBootTest
 public class BalanceServiceUTest {
 
-	//@MockBean
-	//private BalanceRepository balanceRepository;
-
 	@Autowired
 	private BalanceService balanceService;
 
 	
 	@Test
-	public void calculateMonthlyBalanceWithValidBudget() {
+	public void givenOneValidBudgetReturnBalanceAmount() {
 		BalanceDTO balanceDTO = balanceService.calculate(validBudget());
+		assertThat(balanceDTO.getAmount(), equalTo(5400.0));
 	}
 
 }

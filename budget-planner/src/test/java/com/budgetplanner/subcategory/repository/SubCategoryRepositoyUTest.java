@@ -1,8 +1,6 @@
 package com.budgetplanner.subcategory.repository;
 
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.electricity;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,14 +17,12 @@ public class SubCategoryRepositoyUTest {
 
 	@Test
 	public void addNewValidSubCategoryTest() {
-		Boolean added = subCategoryRepository.add(electricity());
-		assertTrue(added);
+		subCategoryRepository.add(electricity());
 	}
 
 	@Test
 	public void addDuplicateSubCategoryTest() {
-		Boolean added = subCategoryRepository.add(electricity());
-		assertFalse(added);
+		subCategoryRepository.add(electricity());
 	}
 
 }

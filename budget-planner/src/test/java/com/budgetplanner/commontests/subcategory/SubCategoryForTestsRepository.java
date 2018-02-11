@@ -8,11 +8,11 @@ import com.budgetplanner.domain.SubCategoryDTO;
 public class SubCategoryForTestsRepository {
 
 	public static SubCategoryDTO electricity() {
-		return new SubCategoryDTO(1, "Electricity", 0.0);
+		return new SubCategoryDTO(1, "Electricity", 100.0);
 	}
 
 	public static SubCategoryDTO rent() {
-		return new SubCategoryDTO(2, "Rent", 0.0);
+		return new SubCategoryDTO(2, "Rent", 2000.0);
 
 	}
 

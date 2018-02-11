@@ -9,7 +9,7 @@ public interface SubCategoryRepository {
 
 	public static final Set<SubCategoryDTO> SUBCATEGORY_DATABASE = new HashSet<>();
 
-	Boolean add(SubCategoryDTO electricity);
+	void add(SubCategoryDTO electricity);
 
 	SubCategoryDTO findById(Integer addedId);
 

@@ -19,6 +19,7 @@ public class BalanceServiceImpl implements BalanceService {
 		Double totalExpense = calculateTotalExpense(budget);
 		balance.setTotalIncome(totalIncome);
 		balance.setTotalExpense(totalExpense);
+		balance.setAmount(totalIncome - totalExpense);
 		return balance;
 	}
 

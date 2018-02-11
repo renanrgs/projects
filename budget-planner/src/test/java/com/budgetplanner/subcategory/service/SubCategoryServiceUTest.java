@@ -5,8 +5,6 @@ import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepos
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.subCategoryIdLowerThanZero;
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.subCategoryWithIdGreaterThan200;
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.subCategoryWithNullIdAndName;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.subcategory.repository.SubCategoryRepository;
-import com.budgetplanner.subcategory.service.SubCategoryService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -32,9 +29,7 @@ public class SubCategoryServiceUTest {
 
 	@Test
 	public void addNewValidSubCategoryTest() {
-		when(subCategoryRepository.add(rent())).thenReturn(true);
-		Boolean added = subCategoryService.add(rent());
-		assertTrue(added);
+		subCategoryService.add(rent());
 	}
 
 	@Test(expected = IllegalArgumentException.class)

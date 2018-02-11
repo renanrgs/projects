@@ -5,6 +5,7 @@ public class BalanceDTO {
 	private BudgetDTO budgetDTO;
 	private Double totalIncome;
 	private Double totalExpense;
+	private Double amount;
 
 	public BalanceDTO(BudgetDTO budgetDTO) {
 		this.budgetDTO = budgetDTO;
@@ -57,6 +58,14 @@ public class BalanceDTO {
 
 	public void setTotalExpense(Double totalExpense) {
 		this.totalExpense = totalExpense;
+	}
+
+	public Double getAmount() {
+		return this.amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 }
