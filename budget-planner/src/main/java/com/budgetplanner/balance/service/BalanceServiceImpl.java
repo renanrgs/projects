@@ -8,9 +8,8 @@ import com.budgetplanner.domain.BalanceDTO;
 public class BalanceServiceImpl implements BalanceService{
 
 	@Override
-	public void insert(BalanceDTO validBalance) {
-		// TODO Auto-generated method stub
-		
+	public BalanceDTO calculate(BalanceDTO validBalance) {
+		return null;
 	}
 
 }

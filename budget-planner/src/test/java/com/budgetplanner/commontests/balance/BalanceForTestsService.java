@@ -6,7 +6,7 @@ import com.budgetplanner.domain.BudgetDTO;
 
 public class BalanceForTestsService {
 
-	public static BalanceDTO validBalance() {
+	public static BalanceDTO validBalanceWithValidBudget() {
 		BudgetDTO validBudget = BudgetForTestsService.validBudget();
 		return new BalanceDTO(validBudget);
 	}

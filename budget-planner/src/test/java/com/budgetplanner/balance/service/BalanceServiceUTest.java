@@ -1,41 +1,42 @@
 package com.budgetplanner.balance.service;
 
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBalance;
-import static org.mockito.Mockito.doAnswer;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBalanceWithValidBudget;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.balance.repository.BalanceRepository;
 import com.budgetplanner.domain.BalanceDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BalanceServiceUTest {
 
-	@MockBean
-	private BalanceRepository balanceRepository;
+	//@MockBean
+	//private BalanceRepository balanceRepository;
 
 	@Autowired
 	private BalanceService balanceService;
 
+	private List<BalanceDTO> balances;
+	
+	@Before
+	public void setUp() {
+		balances = new ArrayList<BalanceDTO>();
+	}
+	
 	@Test
-	public void insertValidBalance() {
-		doAnswer(new Answer<List<BalanceDTO>>() {
-			@Override
-			public List<BalanceDTO> answer(InvocationOnMock invocation) throws Throwable {
-				return null;
-			}
-		}).when(balanceRepository).insert(validBalance());
-		balanceService.insert(validBalance());
+	public void calculateMonthlyBalanceWithValidBudget() {
+		BalanceDTO balanceDTO = balanceService.calculate(validBalanceWithValidBudget());
+		assertThat(balances.size(), equalTo(1));
 	}
 
 }

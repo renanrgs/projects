@@ -4,6 +4,6 @@ import com.budgetplanner.domain.BalanceDTO;
 
 public interface BalanceService {
 
-	void insert(BalanceDTO validBalance);
+	BalanceDTO calculate(BalanceDTO validBalance);
 
 }
