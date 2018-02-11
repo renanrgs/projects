@@ -1,6 +1,8 @@
 package com.budgetplanner.expense.service;
 
+import static com.budgetplanner.commontests.expense.ExpenseForTestsService.expenseWithNullCategories;
 import static com.budgetplanner.commontests.expense.ExpenseForTestsService.expenseWithOneInvalidCategoryType;
+import static com.budgetplanner.commontests.expense.ExpenseForTestsService.nullExpense;
 import static com.budgetplanner.commontests.expense.ExpenseForTestsService.oneValidExpense;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -56,6 +58,16 @@ public class ExpenseServiceUTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenOneCategoryIsInvalid() {
 		expenseService.insert(expenseWithOneInvalidCategoryType());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void insertThrowsExceptionWhenCategoriesIsNull() {
+		expenseService.insert(expenseWithNullCategories());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void insertThrowsExceptionWhenExpenseIsNull() {
+		expenseService.insert(nullExpense());
 	}
 
 }

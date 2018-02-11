@@ -20,6 +20,9 @@ public class ExpenseServiceImpl implements ExpenseService {
 	}
 
 	private void validate(ExpenseDTO expenseDTO) {
+		if (expenseDTO == null || expenseDTO.getCategories() == null) {
+			throw new IllegalArgumentException();
+		}
 		if (expenseDTO.getCategories().stream()
 				.anyMatch(category -> !TypeCategory.EXPENSE.equals(category.getTypeCategory()))) {
 			throw new IllegalArgumentException();

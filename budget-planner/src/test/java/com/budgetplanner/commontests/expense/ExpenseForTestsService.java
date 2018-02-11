@@ -16,4 +16,12 @@ public class ExpenseForTestsService {
 		return new ExpenseDTO(Arrays.asList(CategoryForTestsService.housing(), CategoryForTestsService.mainJob()));
 	}
 
+	public static ExpenseDTO expenseWithNullCategories() {
+		return new ExpenseDTO(null);
+	}
+
+	public static ExpenseDTO nullExpense() {
+		return null;
+	}
+
 }
