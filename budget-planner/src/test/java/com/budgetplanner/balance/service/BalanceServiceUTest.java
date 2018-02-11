@@ -1,6 +1,6 @@
 package com.budgetplanner.balance.service;
 
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBalanceWithValidBudget;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudget;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +23,7 @@ public class BalanceServiceUTest {
 	
 	@Test
 	public void calculateMonthlyBalanceWithValidBudget() {
-		BalanceDTO balanceDTO = balanceService.calculate(validBalanceWithValidBudget());
+		BalanceDTO balanceDTO = balanceService.calculate(validBudget());
 	}
 
 }

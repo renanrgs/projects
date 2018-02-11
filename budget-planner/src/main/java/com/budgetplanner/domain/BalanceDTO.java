@@ -3,6 +3,8 @@ package com.budgetplanner.domain;
 public class BalanceDTO {
 
 	private BudgetDTO budgetDTO;
+	private Double totalIncome;
+	private Double totalExpense;
 
 	public BalanceDTO(BudgetDTO budgetDTO) {
 		this.budgetDTO = budgetDTO;
@@ -39,6 +41,22 @@ public class BalanceDTO {
 		} else if (!budgetDTO.equals(other.budgetDTO))
 			return false;
 		return true;
+	}
+
+	public Double totalIncome() {
+		return this.totalIncome;
+	}
+
+	public void setTotalIncome(Double totalIncome) {
+		this.totalIncome = totalIncome;
+	}
+
+	public Double getTotalExpense() {
+		return this.totalExpense;
+	}
+
+	public void setTotalExpense(Double totalExpense) {
+		this.totalExpense = totalExpense;
 	}
 
 }
