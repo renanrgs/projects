@@ -4,6 +4,6 @@ import com.budgetplanner.commontests.budget.ExpenseDTO;
 
 public interface ExpenseService {
 
-	void insert(ExpenseDTO oneValidExpense);
+	void insert(ExpenseDTO expenseDTO);
 
 }

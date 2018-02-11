@@ -37,7 +37,6 @@ public class BudgetUTest {
 	@Before
 	public void setUp() {
 		budgets = new ArrayList<>();
-		budgets.add(validBudget());
 	}
 
 	@Test
@@ -52,7 +51,7 @@ public class BudgetUTest {
 			}
 		}).when(budgetRepository).insert(validBudget());
 		budgetService.insert(validBudget());
-		assertThat(budgets.size(), equalTo(2));
+		assertThat(budgets.size(), equalTo(1));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

@@ -11,4 +11,9 @@ public class ExpenseForTestsService {
 		return new ExpenseDTO(Arrays.asList(CategoryForTestsService.housing()));
 	}
 
+	public static ExpenseDTO expenseWithOneInvalidCategoryType() {
+
+		return new ExpenseDTO(Arrays.asList(CategoryForTestsService.housing(), CategoryForTestsService.mainJob()));
+	}
+
 }

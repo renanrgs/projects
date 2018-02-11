@@ -1,5 +1,6 @@
 package com.budgetplanner.expense.service;
 
+import static com.budgetplanner.commontests.expense.ExpenseForTestsService.expenseWithOneInvalidCategoryType;
 import static com.budgetplanner.commontests.expense.ExpenseForTestsService.oneValidExpense;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -50,6 +51,11 @@ public class ExpenseServiceUTest {
 		}).when(expenseRepository).insert(oneValidExpense());
 		expenseService.insert(oneValidExpense());
 		assertThat(expenses.size(), equalTo(1));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void insertThrowsExceptionWhenOneCategoryIsInvalid() {
+		expenseService.insert(expenseWithOneInvalidCategoryType());
 	}
 
 }
