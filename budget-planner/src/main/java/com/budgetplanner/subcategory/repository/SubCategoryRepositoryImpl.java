@@ -7,8 +7,8 @@ import com.budgetplanner.domain.SubCategoryDTO;
 @Repository
 public class SubCategoryRepositoryImpl implements SubCategoryRepository {
 
-	public Boolean add(SubCategoryDTO subCategoryDTO) {
-		return SUBCATEGORY_DATABASE.add(subCategoryDTO);
+	public void add(SubCategoryDTO subCategoryDTO) {
+		//TODO
 	}
 
 	@Override

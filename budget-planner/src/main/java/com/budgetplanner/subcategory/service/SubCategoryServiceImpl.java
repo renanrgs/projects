@@ -10,7 +10,7 @@ import com.budgetplanner.domain.SubCategoryDTO;
 import com.budgetplanner.subcategory.repository.SubCategoryRepository;
 
 @Service
-public class SubCategoryServiceFacadeImpl implements SubCategoryService {
+public class SubCategoryServiceImpl implements SubCategoryService {
 
 	@Autowired
 	private SubCategoryRepository subCategoryRepository;
@@ -28,14 +28,13 @@ public class SubCategoryServiceFacadeImpl implements SubCategoryService {
 		this.erro = erro;
 	}
 
-	public Boolean add(SubCategoryDTO subCategoryDTO) {
+	public void add(SubCategoryDTO subCategoryDTO) {
 		validate(subCategoryDTO);
-		return subCategoryRepository.add(subCategoryDTO);
+		subCategoryRepository.add(subCategoryDTO);
 	}
 
 	private void validate(SubCategoryDTO subCategoryDTO) {
 		if (subCategoryDTO == null || subCategoryDTO.getId() == null || subCategoryDTO.getName() == null) {
-			System.out.println(erro);
 			throw new IllegalArgumentException(erro);
 		}
 		if (subCategoryDTO.getId() < 0 || subCategoryDTO.getId() > 200) {

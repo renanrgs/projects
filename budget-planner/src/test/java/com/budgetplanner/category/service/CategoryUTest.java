@@ -1,8 +1,8 @@
 package com.budgetplanner.category.service;
 
-import static com.budgetplanner.commontests.category.CategoryForTestsService.categoryWithSubCategoryEmpty;
+import static com.budgetplanner.commontests.category.CategoryForTestsService.expenseCategoryWithSubCategoryEmpty;
 import static com.budgetplanner.commontests.category.CategoryForTestsService.housing;
-import static com.budgetplanner.commontests.category.CategoryForTestsService.categoryWithNullSubCategory;
+import static com.budgetplanner.commontests.category.CategoryForTestsService.expenseCategoryWithNullSubCategory;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -39,12 +39,12 @@ public class CategoryUTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void addThrowsExceptionWhenSubCategoryIsEmpty() {
 		when(categoryRepository.add()).thenReturn(housing());
-		categoryService.add(categoryWithSubCategoryEmpty());
+		categoryService.add(expenseCategoryWithSubCategoryEmpty());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void addThrowsExceptionWhenSubCategoryIsNull() {
 		when(categoryRepository.add()).thenReturn(housing());
-		categoryService.add(categoryWithNullSubCategory());
+		categoryService.add(expenseCategoryWithNullSubCategory());
 	}
 }
