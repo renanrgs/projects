@@ -81,7 +81,6 @@ public class BudgetForTestsService {
 
 	public static BudgetDTO budgetWithNullIncome() {
 		List<CategoryDTO> expensesCaterogies = new ArrayList<>();
-
 		return new BudgetDTO(null, new ExpenseDTO(expensesCaterogies));
 
 	}

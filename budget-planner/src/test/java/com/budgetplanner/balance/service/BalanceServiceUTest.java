@@ -54,9 +54,9 @@ public class BalanceServiceUTest {
 		List<BalanceDTO> balances = balanceService.list(validBudgetList());
 		assertThat(balances.size(), equalTo(2));
 		balances.forEach(balance -> {
-			assertThat(balance.getTotalExpense(), equalTo(7500.0));
+			assertThat(balance.getTotalExpense(), equalTo(2100.0));
 			assertThat(balance.getTotalIncome(), equalTo(7500.0));
-			assertThat(balance.getTotalExpense(), equalTo(7500.0));
+			assertThat(balance.getAmount(), equalTo(5400.0));
 		});
 	}
 }
