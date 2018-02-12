@@ -68,4 +68,8 @@ public class BalanceDTO {
 		this.amount = amount;
 	}
 
+	public Double getTotalIncome() {
+		return this.totalIncome;
+	}
+
 }

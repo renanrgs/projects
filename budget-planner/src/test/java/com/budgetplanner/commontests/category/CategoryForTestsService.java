@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.budgetplanner.category.constants.TypeCategory;
+import com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository;
 import com.budgetplanner.domain.CategoryDTO;
 import com.budgetplanner.domain.SubCategoryDTO;
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.*;
@@ -50,6 +51,12 @@ public class CategoryForTestsService {
 
 		return categoryDTO;
 
+	}
+
+	public static CategoryDTO leisure() {
+		List<SubCategoryDTO> subcategories = Arrays.asList(SubCategoryForTestsRepository.administrativeFee());
+		CategoryDTO categoryDTO = new CategoryDTO(15, "leisure", subcategories, TypeCategory.EXPENSE);
+		return categoryDTO;
 	}
 
 }

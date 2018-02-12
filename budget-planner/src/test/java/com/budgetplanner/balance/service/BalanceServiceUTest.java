@@ -4,6 +4,7 @@ import static com.budgetplanner.commontests.balance.BalanceForTestsService.budge
 import static com.budgetplanner.commontests.balance.BalanceForTestsService.budgetWithoutIncomeCategories;
 import static com.budgetplanner.commontests.balance.BalanceForTestsService.nullBudget;
 import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudget;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudgetList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -46,9 +47,16 @@ public class BalanceServiceUTest {
 		BalanceDTO balanceDTO = balanceService.calculateTotal(budgetWithEmptyIncomeSubCategories());
 		assertThat(balanceDTO.getAmount(), equalTo(-2100.0));
 	}
-	
+
 	@Test
 	public void givenValidBudgetListReturnBalanceList() {
-		//TODO List<BalanceDTO> balances = balanceService.calculateTotal(validBudgetList());
+		//TODO Need to complete this test immediately
+		List<BalanceDTO> balances = balanceService.list(validBudgetList());
+		assertThat(balances.size(), equalTo(2));
+		balances.forEach(balance -> {
+			assertThat(balance.getTotalExpense(), equalTo(7500.0));
+			assertThat(balance.getTotalIncome(), equalTo(7500.0));
+			assertThat(balance.getTotalExpense(), equalTo(7500.0));
+		});
 	}
 }

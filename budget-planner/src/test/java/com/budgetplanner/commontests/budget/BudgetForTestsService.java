@@ -1,7 +1,7 @@
 package com.budgetplanner.commontests.budget;
 
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.electricity;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.netSalary;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.netSalaryFromCompany;
 import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.rent;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class BudgetForTestsService {
 		List<CategoryDTO> expenseCategories = new ArrayList<>();
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
-		List<SubCategoryDTO> subCategories = Arrays.asList(netSalary());
+		List<SubCategoryDTO> subCategories = Arrays.asList(netSalaryFromCompany());
 		mainJob.setSubCategories(subCategories);
 		incomeCategories.add(mainJob);
 		IncomeDTO income = new IncomeDTO(incomeCategories);
@@ -35,6 +35,31 @@ public class BudgetForTestsService {
 		ExpenseDTO expense = new ExpenseDTO(expenseCategories);
 
 		return new BudgetDTO(income, expense);
+	}
+
+	private static BudgetDTO validBudget2() {
+		List<CategoryDTO> incomeCategories = new ArrayList<>();
+		List<CategoryDTO> expenseCategories = new ArrayList<>();
+
+		CategoryDTO mainJob = CategoryForTestsService.mainJob();
+		List<SubCategoryDTO> subCategories = Arrays.asList(netSalaryFromCompany());
+		mainJob.setSubCategories(subCategories);
+		incomeCategories.add(mainJob);
+		IncomeDTO income = new IncomeDTO(incomeCategories);
+
+		CategoryDTO leisure = CategoryForTestsService.leisure();
+		leisure.setSubCategories(Arrays.asList(electricity(), rent()));
+		expenseCategories.add(leisure);
+		ExpenseDTO expense = new ExpenseDTO(expenseCategories);
+
+		return new BudgetDTO(income, expense);
+	}
+	
+	public static List<BudgetDTO> validBudgetList(){
+		List<BudgetDTO> validBudgetList = new ArrayList<>();
+		validBudgetList.add(validBudget());
+		validBudgetList.add(validBudget2());
+		return validBudgetList;
 	}
 
 	public static BudgetDTO budgetWithoutIncomeCategories() {

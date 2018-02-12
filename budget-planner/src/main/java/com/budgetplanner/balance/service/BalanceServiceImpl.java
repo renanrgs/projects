@@ -1,5 +1,6 @@
 package com.budgetplanner.balance.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -35,5 +36,15 @@ public class BalanceServiceImpl implements BalanceService {
 		Stream<SubCategoryDTO> subCategoryStream = category.stream().flatMap(cat -> cat.getSubCategories().stream());
 		return subCategoryStream.reduce(0.0, (acc, subCategory) -> acc + subCategory.getAmount(),
 				(amount1, amount2) -> amount1 + amount2);
+	}
+
+	@Override
+	public List<BalanceDTO> list(List<BudgetDTO> validBudgetList) {
+		List<BalanceDTO> listBalance = new ArrayList<>();
+		validBudgetList.forEach((budget) ->{
+			BalanceDTO balance =  calculateTotal(budget);
+			listBalance.add(balance);
+		});
+		return listBalance;
 	}
 }
