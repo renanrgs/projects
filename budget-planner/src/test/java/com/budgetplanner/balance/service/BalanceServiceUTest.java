@@ -50,7 +50,7 @@ public class BalanceServiceUTest {
 
 	@Test
 	public void givenValidBudgetListReturnBalanceList() {
-		//TODO Need to complete this test immediately
+		//TODO Need to complete this test immediately because the expenses values are the same for all elements within the list
 		List<BalanceDTO> balances = balanceService.list(validBudgetList());
 		assertThat(balances.size(), equalTo(2));
 		balances.forEach(balance -> {
