@@ -19,7 +19,7 @@ public class IncomeForTestsService {
 		return new IncomeDTO(Arrays.asList(CategoryForTestsService.housing(), CategoryForTestsService.mainJob()));
 	}
 	
-	public static IncomeDTO incomeWithSubCategoryLowerThanZero() {
+	public static IncomeDTO incomeLowerThanZero() {
 		return new IncomeDTO(Arrays.asList(CategoryForTestsService.incomeCategoryWithSubCategoryLowerThanZero()));
 	}
 

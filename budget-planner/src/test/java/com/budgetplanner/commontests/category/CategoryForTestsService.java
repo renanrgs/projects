@@ -42,4 +42,14 @@ public class CategoryForTestsService {
 		return categoryDTO;
 	}
 
+	public static CategoryDTO expenseCategoryWithSubCategoryLowerThanZero() {
+		List<SubCategoryDTO> subCategoriesWithAmountLowerThanZero = new ArrayList<>();
+		subCategoriesWithAmountLowerThanZero.add(new SubCategoryDTO(11, "Sub Lower than zero", -1.0));
+		CategoryDTO categoryDTO = new CategoryDTO(10, "Income Lower Than Zero", subCategoriesWithAmountLowerThanZero,
+				TypeCategory.EXPENSE);
+
+		return categoryDTO;
+
+	}
+
 }

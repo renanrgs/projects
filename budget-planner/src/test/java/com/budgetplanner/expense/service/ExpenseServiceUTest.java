@@ -4,6 +4,8 @@ import static com.budgetplanner.commontests.expense.ExpenseForTestsService.expen
 import static com.budgetplanner.commontests.expense.ExpenseForTestsService.expenseWithOneInvalidCategoryType;
 import static com.budgetplanner.commontests.expense.ExpenseForTestsService.nullExpense;
 import static com.budgetplanner.commontests.expense.ExpenseForTestsService.oneValidExpense;
+import static com.budgetplanner.commontests.expense.ExpenseForTestsService.expenseLowerThanZero;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.doAnswer;
@@ -70,4 +72,8 @@ public class ExpenseServiceUTest {
 		expenseService.insert(nullExpense());
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void insertThrowsExceptionWhenExpenseLowerThanZero() {
+		expenseService.insert(expenseLowerThanZero());
+	}
 }

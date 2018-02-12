@@ -25,8 +25,10 @@ public class IncomeServiceImpl implements IncomeService {
 			throw new IllegalArgumentException();
 		}
 
+		// It'll need to be coded again
 		boolean subCategoryAmountLowerThanZero = incomeDTO.getIncomeCategories().stream()
-				.flatMap((cat) -> cat.getSubCategories().stream().filter(subCategory -> subCategory.getAmount() < 0)).count() > 0;
+				.flatMap((cat) -> cat.getSubCategories().stream().filter(subCategory -> subCategory.getAmount() < 0))
+				.count() > 0;
 
 		if (subCategoryAmountLowerThanZero)
 			throw new IllegalArgumentException();

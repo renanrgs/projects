@@ -59,7 +59,7 @@ public class IncomeServiceUTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void insertThrowsExcepionWhenSubCategoryLowerThanZero() {
-		incomeService.insert(incomeWithSubCategoryLowerThanZero());
+	public void insertThrowsExceptionWhenIncomeLowerThanZero() {
+		incomeService.insert(incomeLowerThanZero());
 	}
 }
