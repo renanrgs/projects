@@ -9,4 +9,15 @@ public class BalanceForTestsService {
 		return BudgetForTestsService.validBudget();
 	}
 
+	public static BudgetDTO nullBudget() {
+		return BudgetForTestsService.nullBudget();
+	}
+	
+	public static BudgetDTO budgetWithoutIncomeCategories() {
+		return BudgetForTestsService.budgetWithoutIncomeCategories();
+	}
+	
+	public static BudgetDTO budgetWithEmptyIncomeSubCategories() {
+		return BudgetForTestsService.budgetWithEmptyIncomeSubCategories();
+	}
 }

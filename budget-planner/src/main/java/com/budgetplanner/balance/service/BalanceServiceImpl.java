@@ -15,6 +15,7 @@ public class BalanceServiceImpl implements BalanceService {
 
 	@Override
 	public BalanceDTO calculateTotal(BudgetDTO budget) {
+		validate(budget);
 		BalanceDTO balance = new BalanceDTO(budget);
 		Double totalIncome = calculateTotal(budget.getIncome().getIncomeCategories());
 		Double totalExpense = calculateTotal(budget.getExpense().getCategories());
@@ -22,6 +23,12 @@ public class BalanceServiceImpl implements BalanceService {
 		balance.setTotalExpense(totalExpense);
 		balance.setAmount(totalIncome - totalExpense);
 		return balance;
+	}
+
+	private void validate(BudgetDTO budget) {
+		if(budget == null) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	private Double calculateTotal(List<CategoryDTO> category) {
