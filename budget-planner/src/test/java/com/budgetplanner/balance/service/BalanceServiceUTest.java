@@ -1,8 +1,13 @@
 package com.budgetplanner.balance.service;
 
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.*;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.budgetWithEmptyIncomeSubCategories;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.budgetWithoutIncomeCategories;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.nullBudget;
+import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudget;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,5 +45,10 @@ public class BalanceServiceUTest {
 	public void givenBudgetWithoutIncomeSubCategoriesReturnBalanceAmount() {
 		BalanceDTO balanceDTO = balanceService.calculateTotal(budgetWithEmptyIncomeSubCategories());
 		assertThat(balanceDTO.getAmount(), equalTo(-2100.0));
+	}
+	
+	@Test
+	public void givenValidBudgetListReturnBalanceList() {
+		//TODO List<BalanceDTO> balances = balanceService.calculateTotal(validBudgetList());
 	}
 }
