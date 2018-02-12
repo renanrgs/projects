@@ -1,6 +1,6 @@
 package com.budgetplanner.income.service;
 
-import static com.budgetplanner.commontests.income.IncomeForTestsService.incomeWithOneInvalidCategoryType;
+import static com.budgetplanner.commontests.income.IncomeForTestsService.*;
 import static com.budgetplanner.commontests.income.IncomeForTestsService.oneValidIncome;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -30,7 +30,7 @@ public class IncomeServiceUTest {
 	private IncomeRepository incomeRepository;
 
 	@Autowired
-	private IncomeService incomeService;	
+	private IncomeService incomeService;
 
 	private List<IncomeDTO> incomes;
 
@@ -56,5 +56,10 @@ public class IncomeServiceUTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenOneCategoryIsInvalid() {
 		incomeService.insert(incomeWithOneInvalidCategoryType());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void insertThrowsExcepionWhenSubCategoryLowerThanZero() {
+		incomeService.insert(incomeWithSubCategoryLowerThanZero());
 	}
 }

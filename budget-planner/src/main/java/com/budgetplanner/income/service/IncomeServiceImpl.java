@@ -21,7 +21,14 @@ public class IncomeServiceImpl implements IncomeService {
 
 	private void validate(IncomeDTO incomeDTO) {
 		if (incomeDTO.getIncomeCategories().stream()
-				.anyMatch(category -> !TypeCategory.INCOME.equals(category.getTypeCategory())))
+				.anyMatch(category -> !TypeCategory.INCOME.equals(category.getTypeCategory()))) {
+			throw new IllegalArgumentException();
+		}
+
+		boolean subCategoryAmountLowerThanZero = incomeDTO.getIncomeCategories().stream()
+				.flatMap((cat) -> cat.getSubCategories().stream().filter(subCategory -> subCategory.getAmount() < 0)).count() > 0;
+
+		if (subCategoryAmountLowerThanZero)
 			throw new IllegalArgumentException();
 	}
 
