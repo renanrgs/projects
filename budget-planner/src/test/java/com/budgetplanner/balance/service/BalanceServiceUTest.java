@@ -10,7 +10,9 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,14 +27,18 @@ public class BalanceServiceUTest {
 	@Autowired
 	private BalanceService balanceService;
 
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+	
 	@Test
 	public void givenOneValidBudgetReturnBalanceAmount() {
 		BalanceDTO balanceDTO = balanceService.calculateTotal(validBudget());
 		assertThat(balanceDTO.getAmount(), equalTo(5400.0));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void givenANullBudgetThrowAnException() {
+		thrown.expect(IllegalArgumentException.class);
 		balanceService.calculateTotal(nullBudget());
 	}
 
