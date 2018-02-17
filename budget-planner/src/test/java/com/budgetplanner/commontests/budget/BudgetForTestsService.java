@@ -1,8 +1,6 @@
 package com.budgetplanner.commontests.budget;
 
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.electricity;
 import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.netSalaryFromCompany;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.rent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +11,6 @@ import org.junit.Ignore;
 import com.budgetplanner.commontests.category.CategoryForTestsService;
 import com.budgetplanner.domain.BudgetDTO;
 import com.budgetplanner.domain.CategoryDTO;
-import com.budgetplanner.domain.IncomeDTO;
 import com.budgetplanner.domain.FinancialMovementDTO;
 
 @Ignore
@@ -26,18 +23,10 @@ public class BudgetForTestsService {
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
 		List<FinancialMovementDTO> financialMovements = Arrays.asList(netSalaryFromCompany());
 		
+		BudgetDTO budgetDTO = new BudgetDTO();
 		
 		
-		mainJob.setSubCategories(financialMovements);
-		incomeCategories.add(mainJob);
-		IncomeDTO income = new IncomeDTO(incomeCategories);
-
-		CategoryDTO housingCategory = CategoryForTestsService.housing();
-		housingCategory.setSubCategories(Arrays.asList(electricity(), rent()));
-		expenseCategories.add(housingCategory);
-		ExpenseDTO expense = new ExpenseDTO(expenseCategories);
-
-		return new BudgetDTO(income, expense);
+		return budgetDTO;
 	}
 
 	private static BudgetDTO validBudget2() {
@@ -46,16 +35,8 @@ public class BudgetForTestsService {
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
 		List<FinancialMovementDTO> subCategories = Arrays.asList(netSalaryFromCompany());
-		mainJob.setSubCategories(subCategories);
 		incomeCategories.add(mainJob);
-		IncomeDTO income = new IncomeDTO(incomeCategories);
-
-		CategoryDTO leisure = CategoryForTestsService.leisure();
-		leisure.setSubCategories(Arrays.asList(electricity(), rent()));
-		expenseCategories.add(leisure);
-		ExpenseDTO expense = new ExpenseDTO(expenseCategories);
-
-		return new BudgetDTO(income, expense);
+		return new BudgetDTO();
 	}
 	
 	public static List<BudgetDTO> validBudgetList(){
@@ -68,14 +49,9 @@ public class BudgetForTestsService {
 	public static BudgetDTO budgetWithoutIncomeCategories() {
 		List<CategoryDTO> expenseCategories = new ArrayList<>();
 		CategoryDTO housingCategory = CategoryForTestsService.housing();
-		housingCategory.setSubCategories(Arrays.asList(electricity(), rent()));
-		expenseCategories.add(housingCategory);
-		ExpenseDTO expense = new ExpenseDTO(expenseCategories);
 
-		List<CategoryDTO> incomeCategories = new ArrayList<>();
-		IncomeDTO income = new IncomeDTO(incomeCategories);
 
-		return new BudgetDTO(income, expense);
+		return new BudgetDTO();
 	}
 
 	public static BudgetDTO nullBudget() {
@@ -84,16 +60,14 @@ public class BudgetForTestsService {
 
 	public static BudgetDTO budgetWithNullIncome() {
 		List<CategoryDTO> expensesCaterogies = new ArrayList<>();
-		return new BudgetDTO(null, new ExpenseDTO(expensesCaterogies));
+		return new BudgetDTO();
 
 	}
 
 	public static BudgetDTO budgetWithEmptyIncome() {
 		List<CategoryDTO> incomeCategories = new ArrayList<>();
-		IncomeDTO income = new IncomeDTO(incomeCategories);
-		ExpenseDTO expense = new ExpenseDTO(new ArrayList<CategoryDTO>());
 
-		return new BudgetDTO(income, expense);
+		return new BudgetDTO();
 	}
 
 	public static BudgetDTO budgetWithEmptyIncomeSubCategories() {
@@ -102,16 +76,11 @@ public class BudgetForTestsService {
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
 		List<FinancialMovementDTO> IncomesubCategories = new ArrayList<>();
-		mainJob.setSubCategories(IncomesubCategories);
 		incomeCategories.add(mainJob);
-		IncomeDTO income = new IncomeDTO(incomeCategories);
 
 		CategoryDTO housingCategory = CategoryForTestsService.housing();
-		housingCategory.setSubCategories(Arrays.asList(electricity(), rent()));
 		expenseCategories.add(housingCategory);
-		ExpenseDTO expense = new ExpenseDTO(expenseCategories);
-
-		return new BudgetDTO(income, expense);
+		return new BudgetDTO();
 
 	}
 }
