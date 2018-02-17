@@ -1,8 +1,8 @@
 package com.budgetplanner.commontests.budget;
 
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.electricity;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.netSalaryFromCompany;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.rent;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.electricity;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.netSalaryFromCompany;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.rent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,8 +24,8 @@ public class BudgetForTestsService {
 		List<CategoryDTO> expenseCategories = new ArrayList<>();
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
-		List<SubCategoryDTO> subCategories = Arrays.asList(netSalaryFromCompany());
-		mainJob.setSubCategories(subCategories);
+		List<SubCategoryDTO> categories = Arrays.asList(netSalaryFromCompany());
+		mainJob.setSubCategories(categories);
 		incomeCategories.add(mainJob);
 		IncomeDTO income = new IncomeDTO(incomeCategories);
 

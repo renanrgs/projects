@@ -2,21 +2,50 @@ package com.budgetplanner.domain;
 
 import java.util.List;
 
-import com.budgetplanner.category.constants.TypeCategory;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import com.budgetplanner.category.constants.TypeFlow;
+
+@Entity(name = "CategoryDTO")
+@Table(name = "category")
 public class CategoryDTO {
 
+	@Id
+	@GeneratedValue
 	private Integer id;
-	private String name;
-	private List<SubCategoryDTO> subCategories;
-	private TypeCategory typeCategory;
 
-	public CategoryDTO(Integer id, String name, List<SubCategoryDTO> subCategories, TypeCategory typeCategory) {
+	@Column(columnDefinition = "CHAR (30)", nullable = false)
+	private String name;
+
+	@OneToMany(mappedBy = "categoryDTO", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SubCategoryDTO> subCategories;
+
+	@ManyToOne
+	private FlowDTO flowDTO;
+
+	public CategoryDTO(Integer id, String name, List<SubCategoryDTO> subCategories, TypeFlow typeCategory) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.subCategories = subCategories;
-		this.typeCategory = typeCategory;
+		this.setFlowDTO(typeCategory.getFlowDTO());
+	}
+
+	public void addSubCategoryDTO(SubCategoryDTO subCategoryDTO) {
+		this.subCategories.add(subCategoryDTO);
+		subCategoryDTO.setCategoryDTO(this);
+	}
+
+	public void removeSubCategoryDTO(SubCategoryDTO subCategoryDTO) {
+		this.subCategories.remove(subCategoryDTO);
+		subCategoryDTO.setCategoryDTO(null);
 	}
 
 	public Integer getId() {
@@ -43,14 +72,6 @@ public class CategoryDTO {
 		this.subCategories = subCategories;
 	}
 
-	public TypeCategory getTypeCategory() {
-		return typeCategory;
-	}
-
-	public void setTypeCategory(TypeCategory typeCategory) {
-		this.typeCategory = typeCategory;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,6 +95,14 @@ public class CategoryDTO {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public FlowDTO getFlowDTO() {
+		return flowDTO;
+	}
+
+	public void setFlowDTO(FlowDTO flowDTO) {
+		this.flowDTO = flowDTO;
 	}
 
 }

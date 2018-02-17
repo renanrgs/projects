@@ -1,65 +1,54 @@
 package com.budgetplanner.domain;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import com.budgetplanner.commontests.budget.ExpenseDTO;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity(name = "BudgetDTO")
+@Table(name = "budget")
 public class BudgetDTO {
 
-	private Integer month;
-	private Integer year;
-	private LocalDate period;
-	IncomeDTO income;
-	ExpenseDTO expense;
+	@EmbeddedId
+	private BudgetCompositePK id;
 
-	public BudgetDTO(IncomeDTO income, ExpenseDTO expense) {
+	@ManyToMany(mappedBy = "budgets")
+	private Set<SubCategoryDTO> subcategories = new HashSet<>();
+
+	public BudgetDTO() {
 		super();
 		LocalDate period = LocalDate.now();
-		this.month = period.getMonthValue();
-		this.year = period.getYear();
-		this.period = period;
-		this.income = income;
-		this.expense = expense;
+		this.id.setMonth(period.getMonthValue());
+		this.id.setYear(period.getYear());
 	}
 
-	public Integer getMonth() {
-		return month;
+	public BudgetCompositePK getId() {
+		return id;
 	}
 
-	public Integer getYear() {
-		return year;
+	public void setId(BudgetCompositePK id) {
+		this.id = id;
 	}
 
-	public LocalDate getPeriod() {
-		return period;
+	public Set<SubCategoryDTO> getSubcategories() {
+		return subcategories;
 	}
 
-	public void setPeriod(LocalDate period) {
-		this.period = period;
-	}
-
-	public ExpenseDTO getExpense() {
-		return expense;
-	}
-
-	public void setExpense(ExpenseDTO expense) {
-		this.expense = expense;
-	}
-
-	public IncomeDTO getIncome() {
-		return income;
-	}
-
-	public void setIncome(IncomeDTO income) {
-		this.income = income;
+	public void setSubcategories(Set<SubCategoryDTO> subcategories) {
+		this.subcategories = subcategories;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((month == null) ? 0 : month.hashCode());
-		result = prime * result + ((year == null) ? 0 : year.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -72,15 +61,10 @@ public class BudgetDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		BudgetDTO other = (BudgetDTO) obj;
-		if (month == null) {
-			if (other.month != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!month.equals(other.month))
-			return false;
-		if (year == null) {
-			if (other.year != null)
-				return false;
-		} else if (!year.equals(other.year))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

@@ -1,6 +1,6 @@
 package com.budgetplanner.subcategory.repository;
 
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.electricity;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.electricity;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SubCategoryRepositoyUTest {
 
+	
 	@Autowired
 	private SubCategoryRepository subCategoryRepository;
 

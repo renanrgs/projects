@@ -16,13 +16,14 @@ public class BalanceServiceImpl implements BalanceService {
 
 	@Override
 	public BalanceDTO calculateTotal(BudgetDTO budget) {
+		//TODO
 		validate(budget);
 		BalanceDTO balance = new BalanceDTO(budget);
-		Double totalIncome = calculateTotal(budget.getIncome().getIncomeCategories());
-		Double totalExpense = calculateTotal(budget.getExpense().getCategories());
-		balance.setTotalIncome(totalIncome);
-		balance.setTotalExpense(totalExpense);
-		balance.setAmount(totalIncome - totalExpense);
+//		Double totalIncome = calculateTotal(budget.getIncome().getIncomeCategories());
+//		Double totalExpense = calculateTotal(budget.getExpense().getExpenseCategories());
+//		balance.setTotalIncome(totalIncome);
+//		balance.setTotalExpense(totalExpense);
+//		balance.setAmount(totalIncome - totalExpense);
 		return balance;
 	}
 

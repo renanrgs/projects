@@ -1,10 +1,10 @@
 package com.budgetplanner.subcategory.service;
 
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.nullSubCategory;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.rent;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.subCategoryIdLowerThanZero;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.subCategoryWithIdGreaterThan200;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsRepository.subCategoryWithNullIdAndName;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.nullSubCategory;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.rent;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.subCategoryIdLowerThanZero;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.subCategoryWithIdGreaterThan200;
+import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.subCategoryWithNullIdAndName;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
