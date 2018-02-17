@@ -2,13 +2,11 @@ package com.budgetplanner.domain;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.budgetplanner.category.constants.TypeFlow;
@@ -24,28 +22,14 @@ public class CategoryDTO {
 	@Column(columnDefinition = "CHAR (30)", nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "categoryDTO", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<SubCategoryDTO> subCategories;
-
 	@ManyToOne
 	private FlowDTO flowDTO;
 
-	public CategoryDTO(Integer id, String name, List<SubCategoryDTO> subCategories, TypeFlow typeCategory) {
+	public CategoryDTO(Integer id, String name, List<FinancialMovementDTO> subCategories, TypeFlow typeCategory) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.subCategories = subCategories;
 		this.setFlowDTO(typeCategory.getFlowDTO());
-	}
-
-	public void addSubCategoryDTO(SubCategoryDTO subCategoryDTO) {
-		this.subCategories.add(subCategoryDTO);
-		subCategoryDTO.setCategoryDTO(this);
-	}
-
-	public void removeSubCategoryDTO(SubCategoryDTO subCategoryDTO) {
-		this.subCategories.remove(subCategoryDTO);
-		subCategoryDTO.setCategoryDTO(null);
 	}
 
 	public Integer getId() {
@@ -62,14 +46,6 @@ public class CategoryDTO {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<SubCategoryDTO> getSubCategories() {
-		return subCategories;
-	}
-
-	public void setSubCategories(List<SubCategoryDTO> subCategories) {
-		this.subCategories = subCategories;
 	}
 
 	@Override

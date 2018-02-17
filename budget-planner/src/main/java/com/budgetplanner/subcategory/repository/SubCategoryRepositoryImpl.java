@@ -2,18 +2,19 @@ package com.budgetplanner.subcategory.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.budgetplanner.domain.SubCategoryDTO;
+import com.budgetplanner.domain.FinancialMovementDTO;
 
 @Repository
 public class SubCategoryRepositoryImpl implements SubCategoryRepository {
 
-	public void add(SubCategoryDTO subCategoryDTO) {
+	public void add(FinancialMovementDTO subCategoryDTO) {
 		//TODO
 	}
 
 	@Override
-	public SubCategoryDTO findById(Integer addedId) {
-		return new SubCategoryDTO(0, "", 0.0);
+	public FinancialMovementDTO findById(Integer addedId) {
+		// TODO 
+		return null;
 	}
 
 }

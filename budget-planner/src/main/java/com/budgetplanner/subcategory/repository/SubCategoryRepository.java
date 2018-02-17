@@ -3,14 +3,14 @@ package com.budgetplanner.subcategory.repository;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.budgetplanner.domain.SubCategoryDTO;
+import com.budgetplanner.domain.FinancialMovementDTO;
 
 public interface SubCategoryRepository {
 
-	public static final Set<SubCategoryDTO> SUBCATEGORY_DATABASE = new HashSet<>();
+	public static final Set<FinancialMovementDTO> SUBCATEGORY_DATABASE = new HashSet<>();
 
-	void add(SubCategoryDTO electricity);
+	void add(FinancialMovementDTO electricity);
 
-	SubCategoryDTO findById(Integer addedId);
+	FinancialMovementDTO findById(Integer addedId);
 
 }

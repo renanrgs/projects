@@ -1,10 +1,10 @@
-package com.budgetplanner.subcategory.service;
+package com.budgetplanner.financialmovement.service;
 
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.nullSubCategory;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.rent;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.subCategoryIdLowerThanZero;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.subCategoryWithIdGreaterThan200;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.subCategoryWithNullIdAndName;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.financialMovementIdLowerThanZero;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.financialMovementWithIdGreaterThan200;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.financialMovementWithNullIdAndName;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.nullFinancialMovement;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.rent;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.subcategory.repository.SubCategoryRepository;
+import com.budgetplanner.subcategory.service.SubCategoryService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,21 +35,21 @@ public class SubCategoryServiceUTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void throwsExceptionWhenAddingNullSubCategory() {
-		subCategoryService.add(nullSubCategory());
+		subCategoryService.add(nullFinancialMovement());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void throwsExceptionWhenAddingNullIdAndName() {
-		subCategoryService.add(subCategoryWithNullIdAndName());
+		subCategoryService.add(financialMovementWithNullIdAndName());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void throwsExceptionWhenIdIsLowerThanZero() {
-		subCategoryService.add(subCategoryIdLowerThanZero());
+		subCategoryService.add(financialMovementIdLowerThanZero());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void throwsExceptionWhenIdIsGreaterThan200() {
-		subCategoryService.add(subCategoryWithIdGreaterThan200());
+		subCategoryService.add(financialMovementWithIdGreaterThan200());
 	}
 }

@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class SubCategoryCompositePK implements Serializable{
+public class FinancialMovementCompositePK implements Serializable{
 
 	/**
 	 * 
@@ -55,7 +55,7 @@ public class SubCategoryCompositePK implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SubCategoryCompositePK other = (SubCategoryCompositePK) obj;
+		FinancialMovementCompositePK other = (FinancialMovementCompositePK) obj;
 		if (categoryDTO == null) {
 			if (other.categoryDTO != null)
 				return false;

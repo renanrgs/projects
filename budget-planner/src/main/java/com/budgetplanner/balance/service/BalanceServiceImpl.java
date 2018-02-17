@@ -10,7 +10,7 @@ import com.budgetplanner.category.constants.TypeFlow;
 import com.budgetplanner.domain.BalanceDTO;
 import com.budgetplanner.domain.BudgetDTO;
 import com.budgetplanner.domain.FlowDTO;
-import com.budgetplanner.domain.SubCategoryDTO;
+import com.budgetplanner.domain.FinancialMovementDTO;
 
 @Service
 public class BalanceServiceImpl implements BalanceService {
@@ -33,8 +33,8 @@ public class BalanceServiceImpl implements BalanceService {
 		}
 	}
 
-	private Double calculateTotal(Set<SubCategoryDTO> subCategory, TypeFlow flowDTO) {
-		return subCategory.stream().filter(sub -> sub.getCategoryDTO().getFlowDTO().equals(flowDTO.getFlowDTO()))
+	private Double calculateTotal(Set<FinancialMovementDTO> subCategory, TypeFlow flowDTO) {
+		return subCategory.stream().filter(sub -> sub.getId().getCategoryDTO().getFlowDTO().equals(flowDTO.getFlowDTO()))
 				.reduce(0.0, (acc, sub) -> acc + sub.getAmount(), (amount1, amount2) -> amount1 + amount2);
 
 	}

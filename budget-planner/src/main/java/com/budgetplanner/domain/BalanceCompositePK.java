@@ -15,7 +15,7 @@ public class BalanceCompositePK implements Serializable {
 	private BudgetDTO budgetDTO;
 
 	@ManyToOne
-	private SubCategoryDTO subCategoryDTO;
+	private FinancialMovementDTO subCategoryDTO;
 
 	public BudgetDTO getBudgetDTO() {
 		return budgetDTO;
@@ -25,11 +25,11 @@ public class BalanceCompositePK implements Serializable {
 		this.budgetDTO = budgetDTO;
 	}
 
-	public SubCategoryDTO getSubCategoryDTO() {
+	public FinancialMovementDTO getSubCategoryDTO() {
 		return subCategoryDTO;
 	}
 
-	public void setSubCategoryDTO(SubCategoryDTO subCategoryDTO) {
+	public void setSubCategoryDTO(FinancialMovementDTO subCategoryDTO) {
 		this.subCategoryDTO = subCategoryDTO;
 	}
 

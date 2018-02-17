@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.budgetplanner.domain.SubCategoryDTO;
+import com.budgetplanner.domain.FinancialMovementDTO;
 import com.budgetplanner.subcategory.repository.SubCategoryRepository;
 
 @Service
@@ -28,12 +28,12 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 		this.erro = erro;
 	}
 
-	public void add(SubCategoryDTO subCategoryDTO) {
+	public void add(FinancialMovementDTO subCategoryDTO) {
 		validate(subCategoryDTO);
 		subCategoryRepository.add(subCategoryDTO);
 	}
 
-	private void validate(SubCategoryDTO subCategoryDTO) {
+	private void validate(FinancialMovementDTO subCategoryDTO) {
 		if (subCategoryDTO == null || subCategoryDTO.getId() == null || subCategoryDTO.getName() == null) {
 			throw new IllegalArgumentException(erro);
 		}
@@ -42,7 +42,7 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 		}
 	}
 
-	public List<SubCategoryDTO> list() {
+	public List<FinancialMovementDTO> list() {
 		return null;
 	}
 }

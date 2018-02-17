@@ -1,8 +1,8 @@
 package com.budgetplanner.commontests.budget;
 
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.electricity;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.netSalaryFromCompany;
-import static com.budgetplanner.commontests.subcategory.SubCategoryForTestsService.rent;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.electricity;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.netSalaryFromCompany;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.rent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import com.budgetplanner.commontests.category.CategoryForTestsService;
 import com.budgetplanner.domain.BudgetDTO;
 import com.budgetplanner.domain.CategoryDTO;
 import com.budgetplanner.domain.IncomeDTO;
-import com.budgetplanner.domain.SubCategoryDTO;
+import com.budgetplanner.domain.FinancialMovementDTO;
 
 @Ignore
 public class BudgetForTestsService {
@@ -24,8 +24,11 @@ public class BudgetForTestsService {
 		List<CategoryDTO> expenseCategories = new ArrayList<>();
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
-		List<SubCategoryDTO> categories = Arrays.asList(netSalaryFromCompany());
-		mainJob.setSubCategories(categories);
+		List<FinancialMovementDTO> financialMovements = Arrays.asList(netSalaryFromCompany());
+		
+		
+		
+		mainJob.setSubCategories(financialMovements);
 		incomeCategories.add(mainJob);
 		IncomeDTO income = new IncomeDTO(incomeCategories);
 
@@ -42,7 +45,7 @@ public class BudgetForTestsService {
 		List<CategoryDTO> expenseCategories = new ArrayList<>();
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
-		List<SubCategoryDTO> subCategories = Arrays.asList(netSalaryFromCompany());
+		List<FinancialMovementDTO> subCategories = Arrays.asList(netSalaryFromCompany());
 		mainJob.setSubCategories(subCategories);
 		incomeCategories.add(mainJob);
 		IncomeDTO income = new IncomeDTO(incomeCategories);
@@ -98,7 +101,7 @@ public class BudgetForTestsService {
 		List<CategoryDTO> expenseCategories = new ArrayList<>();
 
 		CategoryDTO mainJob = CategoryForTestsService.mainJob();
-		List<SubCategoryDTO> IncomesubCategories = new ArrayList<>();
+		List<FinancialMovementDTO> IncomesubCategories = new ArrayList<>();
 		mainJob.setSubCategories(IncomesubCategories);
 		incomeCategories.add(mainJob);
 		IncomeDTO income = new IncomeDTO(incomeCategories);

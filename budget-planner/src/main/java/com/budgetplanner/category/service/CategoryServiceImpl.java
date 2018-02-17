@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	private void validate(CategoryDTO categoryDTO) {
-		if (categoryDTO == null || categoryDTO.getSubCategories() == null || categoryDTO.getSubCategories().isEmpty())
+		if (categoryDTO == null)
 			throw new IllegalArgumentException();
 	}
 

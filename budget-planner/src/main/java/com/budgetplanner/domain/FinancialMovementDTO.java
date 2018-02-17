@@ -11,12 +11,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity(name = "SubCategoryDTO")
-@Table(name = "subcategory")
-public class SubCategoryDTO implements Serializable {
+@Entity(name = "FinalcialMovementDTO")
+@Table(name = "financial_movement")
+public class FinancialMovementDTO implements Serializable {
 
 	/**
 	 * 
@@ -24,7 +23,7 @@ public class SubCategoryDTO implements Serializable {
 	private static final long serialVersionUID = -7432342599784011594L;
 
 	@EmbeddedId
-	private SubCategoryCompositePK id;
+	private FinancialMovementCompositePK id;
 
 	@Column(nullable = false, columnDefinition = "CHAR(30)")
 	private String name;
@@ -32,28 +31,25 @@ public class SubCategoryDTO implements Serializable {
 	@Column(nullable = false)
 	private Double amount;
 
-	@ManyToOne
-	private CategoryDTO categoryDTO;
-
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "budget_subcategory", joinColumns = { @JoinColumn(name = "budget_month"),
 			@JoinColumn(name = "budget_year") }, inverseJoinColumns = { @JoinColumn(name = "subcategory_id"),
 					@JoinColumn(name = "subcategory_category_id") })
 	private Set<BudgetDTO> budgets = new HashSet<>();
 
-	
-	public SubCategoryDTO(Integer id, String name, Double amount) {
+	public FinancialMovementDTO(Integer id, String name, Double amount, CategoryDTO categoryDTO) {
 		super();
 		this.id.setId(id);
+		this.id.setCategoryDTO(categoryDTO);
 		this.name = name;
 		this.amount = amount;
 	}
 
-	public SubCategoryCompositePK getId() {
+	public FinancialMovementCompositePK getId() {
 		return id;
 	}
 
-	public void setId(SubCategoryCompositePK id) {
+	public void setId(FinancialMovementCompositePK id) {
 		this.id = id;
 	}
 
@@ -89,21 +85,13 @@ public class SubCategoryDTO implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SubCategoryDTO other = (SubCategoryDTO) obj;
+		FinancialMovementDTO other = (FinancialMovementDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public CategoryDTO getCategoryDTO() {
-		return categoryDTO;
-	}
-
-	public void setCategoryDTO(CategoryDTO categoryDTO) {
-		this.categoryDTO = categoryDTO;
 	}
 
 	public Set<BudgetDTO> getBudgets() {
@@ -113,6 +101,5 @@ public class SubCategoryDTO implements Serializable {
 	public void setBudgets(Set<BudgetDTO> budgets) {
 		this.budgets = budgets;
 	}
-
 
 }
