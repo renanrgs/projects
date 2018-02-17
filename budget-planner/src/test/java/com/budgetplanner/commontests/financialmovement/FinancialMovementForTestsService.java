@@ -9,7 +9,8 @@ import com.budgetplanner.domain.FinancialMovementDTO;
 public class FinancialMovementForTestsService {
 
 	public static FinancialMovementDTO electricity() {
-		return new FinancialMovementDTO(1, "Electricity", 100.0, CategoryForTestsService.housing());
+		FinancialMovementDTO financialMovementDTO = new FinancialMovementDTO(1, "Electricity", 100.0, CategoryForTestsService.housing());
+		return financialMovementDTO;
 	}
 
 	public static FinancialMovementDTO rent() {

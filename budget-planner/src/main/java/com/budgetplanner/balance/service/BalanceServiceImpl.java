@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.budgetplanner.category.constants.TypeFlow;
 import com.budgetplanner.domain.BalanceDTO;
 import com.budgetplanner.domain.BudgetDTO;
-import com.budgetplanner.domain.FlowDTO;
 import com.budgetplanner.domain.FinancialMovementDTO;
 
 @Service

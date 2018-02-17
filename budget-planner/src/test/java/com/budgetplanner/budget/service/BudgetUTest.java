@@ -11,6 +11,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class BudgetUTest {
 	private BudgetRepository budgetRepository;
 
 	@Autowired
+	@InjectMocks
 	private BudgetService budgetService;
 
 	private List<BudgetDTO> budgets;
@@ -50,6 +52,7 @@ public class BudgetUTest {
 				return budgets;
 			}
 		}).when(budgetRepository).insert(validBudget());
+		
 		budgetService.insert(validBudget());
 		assertThat(budgets.size(), equalTo(1));
 	}

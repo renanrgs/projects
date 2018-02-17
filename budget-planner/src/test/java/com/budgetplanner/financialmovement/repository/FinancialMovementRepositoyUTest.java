@@ -8,24 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.subcategory.repository.SubCategoryRepository;
+import com.budgetplanner.financialmovement.repository.FinancialMovementRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SubCategoryRepositoyUTest {
+public class FinancialMovementRepositoyUTest {
 
 	
 	@Autowired
-	private SubCategoryRepository subCategoryRepository;
+	private FinancialMovementRepository financialMovementRepository;
 
 	@Test
 	public void addNewValidSubCategoryTest() {
-		subCategoryRepository.add(electricity());
-	}
-
-	@Test
-	public void addDuplicateSubCategoryTest() {
-		subCategoryRepository.add(electricity());
+		financialMovementRepository.add(electricity());
 	}
 
 }

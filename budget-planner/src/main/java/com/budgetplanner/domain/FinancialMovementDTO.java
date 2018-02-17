@@ -39,10 +39,11 @@ public class FinancialMovementDTO implements Serializable {
 
 	public FinancialMovementDTO(Integer id, String name, Double amount, CategoryDTO categoryDTO) {
 		super();
+		this.id = new FinancialMovementCompositePK();
 		this.id.setId(id);
-		this.id.setCategoryDTO(categoryDTO);
 		this.name = name;
 		this.amount = amount;
+		this.id.setCategoryDTO(categoryDTO);
 	}
 
 	public FinancialMovementCompositePK getId() {

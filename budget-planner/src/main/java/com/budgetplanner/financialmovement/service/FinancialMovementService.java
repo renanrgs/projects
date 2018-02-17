@@ -1,7 +1,7 @@
-package com.budgetplanner.subcategory.service;
+package com.budgetplanner.financialmovement.service;
 
 import com.budgetplanner.domain.FinancialMovementDTO;
 
-public interface SubCategoryService {
+public interface FinancialMovementService {
 	void add(FinancialMovementDTO subcategoryDTO);
 }

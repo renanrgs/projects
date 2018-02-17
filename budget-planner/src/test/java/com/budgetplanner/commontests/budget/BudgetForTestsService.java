@@ -24,8 +24,6 @@ public class BudgetForTestsService {
 		List<FinancialMovementDTO> financialMovements = Arrays.asList(netSalaryFromCompany());
 		
 		BudgetDTO budgetDTO = new BudgetDTO();
-		
-		
 		return budgetDTO;
 	}
 

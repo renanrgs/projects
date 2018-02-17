@@ -14,19 +14,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.subcategory.repository.SubCategoryRepository;
-import com.budgetplanner.subcategory.service.SubCategoryService;
+import com.budgetplanner.financialmovement.repository.FinancialMovementRepository;
+import com.budgetplanner.financialmovement.service.FinancialMovementService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SubCategoryServiceUTest {
+public class FinancialMovementServiceUTest {
 	
 	@Mock
-	private SubCategoryRepository subCategoryRepository;
+	private FinancialMovementRepository subCategoryRepository;
 
 	@Autowired
 	@InjectMocks
-	private SubCategoryService subCategoryService;
+	private FinancialMovementService subCategoryService;
 
 	@Test
 	public void addNewValidSubCategoryTest() {

@@ -25,7 +25,7 @@ public class CategoryDTO {
 	@ManyToOne
 	private FlowDTO flowDTO;
 
-	public CategoryDTO(Integer id, String name, List<FinancialMovementDTO> subCategories, TypeFlow typeCategory) {
+	public CategoryDTO(Integer id, String name, TypeFlow typeCategory) {
 		super();
 		this.id = id;
 		this.name = name;

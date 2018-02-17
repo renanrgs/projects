@@ -17,6 +17,7 @@ public class BalanceDTO {
 	private Double totalExpense;
 
 	public BalanceDTO(BudgetDTO budgetDTO) {
+		this.id = new BalanceCompositePK();
 		this.id.setBudgetDTO(budgetDTO);
 	}
 

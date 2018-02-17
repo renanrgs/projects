@@ -1,11 +1,11 @@
-package com.budgetplanner.subcategory.repository;
+package com.budgetplanner.financialmovement.repository;
 
 import org.springframework.stereotype.Repository;
 
 import com.budgetplanner.domain.FinancialMovementDTO;
 
 @Repository
-public class SubCategoryRepositoryImpl implements SubCategoryRepository {
+public class SubCategoryRepositoryImpl implements FinancialMovementRepository {
 
 	public void add(FinancialMovementDTO subCategoryDTO) {
 		//TODO

@@ -1,4 +1,4 @@
-package com.budgetplanner.subcategory.service;
+package com.budgetplanner.financialmovement.service;
 
 import java.util.List;
 
@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.budgetplanner.domain.FinancialMovementDTO;
-import com.budgetplanner.subcategory.repository.SubCategoryRepository;
+import com.budgetplanner.financialmovement.repository.FinancialMovementRepository;
 
 @Service
-public class SubCategoryServiceImpl implements SubCategoryService {
+public class FinancialMovementServiceImpl implements FinancialMovementService {
 
 	@Autowired
-	private SubCategoryRepository subCategoryRepository;
+	private FinancialMovementRepository subCategoryRepository;
 
 	@Value("${erro.subcategory.null}")
 	private String erro;
