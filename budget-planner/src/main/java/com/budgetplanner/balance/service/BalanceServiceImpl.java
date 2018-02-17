@@ -2,13 +2,14 @@ package com.budgetplanner.balance.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.budgetplanner.category.constants.TypeFlow;
 import com.budgetplanner.domain.BalanceDTO;
 import com.budgetplanner.domain.BudgetDTO;
-import com.budgetplanner.domain.CategoryDTO;
+import com.budgetplanner.domain.FlowDTO;
 import com.budgetplanner.domain.SubCategoryDTO;
 
 @Service
@@ -16,34 +17,33 @@ public class BalanceServiceImpl implements BalanceService {
 
 	@Override
 	public BalanceDTO calculateTotal(BudgetDTO budget) {
-		//TODO
 		validate(budget);
 		BalanceDTO balance = new BalanceDTO(budget);
-//		Double totalIncome = calculateTotal(budget.getIncome().getIncomeCategories());
-//		Double totalExpense = calculateTotal(budget.getExpense().getExpenseCategories());
-//		balance.setTotalIncome(totalIncome);
-//		balance.setTotalExpense(totalExpense);
-//		balance.setAmount(totalIncome - totalExpense);
+		Double totalIncome = calculateTotal(budget.getSubcategories(), TypeFlow.INCOME);
+		Double totalExpense = calculateTotal(budget.getSubcategories(), TypeFlow.EXPENSE);
+		balance.setTotalIncome(totalIncome);
+		balance.setTotalExpense(totalExpense);
+		balance.setAmount(totalIncome - totalExpense);
 		return balance;
 	}
 
 	private void validate(BudgetDTO budget) {
-		if(budget == null) {
+		if (budget == null) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	private Double calculateTotal(List<CategoryDTO> category) {
-		Stream<SubCategoryDTO> subCategoryStream = category.stream().flatMap(cat -> cat.getSubCategories().stream());
-		return subCategoryStream.reduce(0.0, (acc, subCategory) -> acc + subCategory.getAmount(),
-				(amount1, amount2) -> amount1 + amount2);
+	private Double calculateTotal(Set<SubCategoryDTO> subCategory, TypeFlow flowDTO) {
+		return subCategory.stream().filter(sub -> sub.getCategoryDTO().getFlowDTO().equals(flowDTO.getFlowDTO()))
+				.reduce(0.0, (acc, sub) -> acc + sub.getAmount(), (amount1, amount2) -> amount1 + amount2);
+
 	}
 
 	@Override
 	public List<BalanceDTO> list(List<BudgetDTO> validBudgetList) {
 		List<BalanceDTO> listBalance = new ArrayList<>();
-		validBudgetList.forEach((budget) ->{
-			BalanceDTO balance =  calculateTotal(budget);
+		validBudgetList.forEach((budget) -> {
+			BalanceDTO balance = calculateTotal(budget);
 			listBalance.add(balance);
 		});
 		return listBalance;

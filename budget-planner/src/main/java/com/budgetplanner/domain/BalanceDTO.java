@@ -13,6 +13,13 @@ public class BalanceDTO {
 
 	private Double amount;
 
+	private Double totalIncome;
+	private Double totalExpense;
+
+	public BalanceDTO(BudgetDTO budgetDTO) {
+		this.id.setBudgetDTO(budgetDTO);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -42,6 +49,38 @@ public class BalanceDTO {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Double getAmount() {
+		return this.amount;
+	}
+
+	public BalanceCompositePK getId() {
+		return id;
+	}
+
+	public void setId(BalanceCompositePK id) {
+		this.id = id;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public Double getTotalExpense() {
+		return totalExpense;
+	}
+
+	public void setTotalExpense(Double totalExpense) {
+		this.totalExpense = totalExpense;
+	}
+
+	public Double getTotalIncome() {
+		return totalIncome;
+	}
+
+	public void setTotalIncome(Double totalIncome) {
+		this.totalIncome = totalIncome;
 	}
 
 }

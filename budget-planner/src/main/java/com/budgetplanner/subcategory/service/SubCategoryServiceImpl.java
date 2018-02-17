@@ -37,7 +37,7 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 		if (subCategoryDTO == null || subCategoryDTO.getId() == null || subCategoryDTO.getName() == null) {
 			throw new IllegalArgumentException(erro);
 		}
-		if (subCategoryDTO.getId() < 0 || subCategoryDTO.getId() > 200) {
+		if (subCategoryDTO.getId().getId() < 0 || subCategoryDTO.getId().getId() > 200) {
 			throw new IllegalArgumentException(erro);
 		}
 	}
