@@ -24,7 +24,7 @@ public class FlowDTO implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@Column(columnDefinition = "CHAR(30)")
+	@Column(columnDefinition = "CHAR(30)", nullable = false, unique = true)
 	private String name;
 
 	@OneToMany(mappedBy = "flowDTO", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -35,6 +35,10 @@ public class FlowDTO implements Serializable {
 
 	public FlowDTO(Integer id, String name) {
 		this.id = id;
+		this.name = name;
+	}
+
+	public FlowDTO(String name) {
 		this.name = name;
 	}
 
@@ -95,6 +99,11 @@ public class FlowDTO implements Serializable {
 
 	public void setCategories(List<CategoryDTO> categories) {
 		this.categories = categories;
+	}
+
+	@Override
+	public String toString() {
+		return "FlowDTO [id=" + id + ", name=" + name + ", categories=" + categories + "]";
 	}
 
 }
