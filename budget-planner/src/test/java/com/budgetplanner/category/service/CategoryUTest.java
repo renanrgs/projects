@@ -37,7 +37,7 @@ public class CategoryUTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void addThrowsExceptionWhenSubCategoryIsEmpty() {
+	public void addThrowsExceptionWhenFlowIsNull() {
 		when(categoryRepository.add()).thenReturn(housing());
 		categoryService.add(expenseCategoryWithSubCategoryEmpty());
 	}

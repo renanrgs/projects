@@ -35,4 +35,9 @@ public class CategoryForTestsService {
 		return categoryDTO;
 	}
 
+	public static CategoryDTO categoryWithNullFlow() {
+		CategoryDTO categoryDTO = new CategoryDTO(15, "leisure", null);
+		return categoryDTO;
+	}
+
 }
