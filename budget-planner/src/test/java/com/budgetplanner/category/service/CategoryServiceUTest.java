@@ -1,12 +1,11 @@
 package com.budgetplanner.category.service;
 
+import static com.budgetplanner.commontests.category.CategoryForTestsService.expenseCategoryWithNullSubCategory;
 import static com.budgetplanner.commontests.category.CategoryForTestsService.expenseCategoryWithSubCategoryEmpty;
 import static com.budgetplanner.commontests.category.CategoryForTestsService.housing;
-import static com.budgetplanner.commontests.category.CategoryForTestsService.expenseCategoryWithNullSubCategory;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,4 +43,5 @@ public class CategoryServiceUTest {
 	public void addThrowsExceptionWhenSubCategoryIsNull() {
 		categoryService.add(expenseCategoryWithNullSubCategory());
 	}
+	
 }

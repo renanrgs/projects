@@ -33,6 +33,10 @@ public class CategoryDTO {
 	public CategoryDTO() {
 	}
 
+	public CategoryDTO(String name) {
+		this.name = name;
+	}
+
 	public Integer getId() {
 		return id;
 	}
