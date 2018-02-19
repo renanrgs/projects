@@ -2,6 +2,7 @@ package com.budgetplanner.category.service;
 
 import static com.budgetplanner.commontests.category.CategoryForTestsRepository.validCategory;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -31,12 +32,12 @@ public class CategoryRepositoryUTest {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+
 	FlowDTO validFlow;
 
 	@Before
 	public void setUp() {
-		 validFlow = flowRepository.save(FlowForTestsRepository.validFlow());
+		validFlow = flowRepository.save(FlowForTestsRepository.validFlow());
 	}
 
 	@Test
@@ -48,9 +49,21 @@ public class CategoryRepositoryUTest {
 		category = categoryRepository.findOne(category.getId());
 		assertThat(category.getId(), notNullValue());
 	}
-	
+
 	@Test
 	public void givenAValidCategoryThenDelete() {
-		
+		CategoryDTO category = validCategory();
+		assertThat(category.getId(), nullValue());
+
+		category.setFlowDTO(validFlow);
+		category = categoryRepository.save(category);
+		assertThat(category.getId(), notNullValue());
+
+		category = categoryRepository.findOne(category.getId());
+		assertThat(category.getId(), notNullValue());
+
+		categoryRepository.delete(category);
+		category = categoryRepository.findOne(category.getId());
+		assertThat(category, nullValue());
 	}
 }
