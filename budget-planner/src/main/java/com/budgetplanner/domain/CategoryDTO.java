@@ -30,6 +30,9 @@ public class CategoryDTO {
 		this.setFlowDTO(typeCategory.getFlowDTO());
 	}
 
+	public CategoryDTO() {
+	}
+
 	public Integer getId() {
 		return id;
 	}

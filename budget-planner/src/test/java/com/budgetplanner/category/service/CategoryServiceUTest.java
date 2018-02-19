@@ -20,7 +20,7 @@ import com.budgetplanner.domain.CategoryDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CategoryUTest {
+public class CategoryServiceUTest {
 
 	@MockBean
 	private CategoryRepository categoryRepository;
@@ -30,7 +30,6 @@ public class CategoryUTest {
 
 	@Test
 	public void addNewValidCategory() {
-		when(categoryRepository.add()).thenReturn(housing());
 		CategoryDTO categoryDTO = categoryService.add(housing());
 		assertThat(categoryDTO, notNullValue());
 		assertThat(categoryDTO, equalTo(housing()));
@@ -38,13 +37,11 @@ public class CategoryUTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void addThrowsExceptionWhenFlowIsNull() {
-		when(categoryRepository.add()).thenReturn(housing());
 		categoryService.add(expenseCategoryWithSubCategoryEmpty());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void addThrowsExceptionWhenSubCategoryIsNull() {
-		when(categoryRepository.add()).thenReturn(housing());
 		categoryService.add(expenseCategoryWithNullSubCategory());
 	}
 }

@@ -1,9 +1,13 @@
 package com.budgetplanner.flow.repository;
 
+import static com.budgetplanner.commontests.flow.FlowForTestsRepository.flowWithIncomeAsName;
 import static com.budgetplanner.commontests.flow.FlowForTestsRepository.flowWithNullName;
+import static com.budgetplanner.commontests.flow.FlowForTestsRepository.nullFlow;
+import static com.budgetplanner.commontests.flow.FlowForTestsRepository.twoValidFlow;
 import static com.budgetplanner.commontests.flow.FlowForTestsRepository.validFlow;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -15,9 +19,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.commontests.flow.FlowForTestsRepository;
 import com.budgetplanner.domain.FlowDTO;
 
 @RunWith(SpringRunner.class)
@@ -32,9 +36,9 @@ public class FlowRepositoryUTest {
 
 	@Test
 	public void givenAValidFlowThenInsert() {
-		flowRepository.save(validFlow());
-		FlowDTO flowDTO = flowRepository.findOne(1);
-		assertThat(flowDTO, notNullValue());
+		FlowDTO flowDTO = flowRepository.save(validFlow());
+		flowDTO = flowRepository.findOne(flowDTO.getId());
+		assertThat(flowDTO.getId(), notNullValue());
 	}
 
 	@Test
@@ -46,15 +50,32 @@ public class FlowRepositoryUTest {
 	@Test
 	public void givenADuplicateFlowNameThenThrowsException() {
 		exception.expect(DataIntegrityViolationException.class);
-		flowRepository.save(FlowForTestsRepository.flowWithIncomeAsName());
-		flowRepository.save(FlowForTestsRepository.flowWithIncomeAsName());
+		flowRepository.save(flowWithIncomeAsName());
+		flowRepository.save(flowWithIncomeAsName());
 	}
 
 	@Test
 	public void givenAValidFlowListThenInsertAll() {
-		flowRepository.save(FlowForTestsRepository.twoValidFlow());
+		flowRepository.save(twoValidFlow());
 		List<FlowDTO> allFlows = (List<FlowDTO>) flowRepository.findAll();
 		assertThat(allFlows.size(), equalTo(2));
+	}
+
+	@Test
+	public void givenAValidFlowThenDelete() {
+		FlowDTO flow = validFlow();
+		assertThat(flow.getId(), nullValue());
+		flow = flowRepository.save(flow);
+		assertThat(flow.getId(), notNullValue());
+		flowRepository.delete(flow);
+		flow = flowRepository.findOne(flow.getId());
+		assertThat(flow, nullValue());
+	}
+
+	@Test
+	public void givenANullFlowThrowsException() {
+		exception.expect(InvalidDataAccessApiUsageException.class);
+		flowRepository.save(nullFlow());
 	}
 
 }

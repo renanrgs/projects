@@ -15,7 +15,7 @@ public class FlowForTestsRepository {
 		validFlow.setName("Income");
 		return validFlow;
 	}
-
+	
 	public static FlowDTO flowWithNullName() {
 		FlowDTO flowWithIdOne = new FlowDTO();
 		flowWithIdOne.setName(null);
@@ -30,6 +30,14 @@ public class FlowForTestsRepository {
 
 	public static List<FlowDTO> twoValidFlow() {
 		return Arrays.asList(new FlowDTO("Income"), new FlowDTO("Expense"));
+	}
+
+	public static List<FlowDTO> twoFlowWithDuplicateId() {
+		return Arrays.asList(new FlowDTO("Income"), new FlowDTO("wwww"));
+	}
+
+	public static FlowDTO nullFlow() {
+		return null;
 	}
 
 }

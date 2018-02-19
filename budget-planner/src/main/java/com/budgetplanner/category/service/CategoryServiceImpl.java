@@ -15,7 +15,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryDTO add(CategoryDTO categoryDTO) {
 		validate(categoryDTO);
-		return categoryRepository.add();
+		return null;
 	}
 
 	private void validate(CategoryDTO categoryDTO) {
