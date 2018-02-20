@@ -40,4 +40,8 @@ public class FlowForTestsRepository {
 		return null;
 	}
 
+	public static FlowDTO flowWithEmptyName() {
+		return new FlowDTO("");
+	}
+
 }
