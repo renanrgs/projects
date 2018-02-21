@@ -25,11 +25,6 @@ public class CategoryServiceUTest {
 	@Autowired
 	private CategoryService categoryService;
 
-	@Autowired
-	private FlowRepository flowRepository;
-
-	private FlowDTO validFlow;
-
 	@Before
 	public void setUp() {
 		// validFlow = flowRepository.save(FlowForTestsRepository.validFlow());
