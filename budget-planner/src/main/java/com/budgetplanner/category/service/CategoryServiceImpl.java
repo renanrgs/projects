@@ -1,5 +1,8 @@
 package com.budgetplanner.category.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +15,20 @@ public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@Override
-	public CategoryDTO add(CategoryDTO categoryDTO) {
-		validate(categoryDTO);
-		return null;
+	private void validate(CategoryDTO categoryDTO) {
+		Optional.ofNullable(categoryDTO).orElseThrow(IllegalArgumentException::new);
+		Optional.ofNullable(categoryDTO.getName()).orElseThrow(IllegalArgumentException::new);
 	}
 
-	private void validate(CategoryDTO categoryDTO) {
-		if (categoryDTO == null)
-			throw new IllegalArgumentException();
+	@Override
+	public void save(CategoryDTO categoryDTO) {
+		validate(categoryDTO);
+		categoryRepository.save(categoryDTO);
+	}
+
+	@Override
+	public List<CategoryDTO> findAll() {
+		return (List<CategoryDTO>) categoryRepository.findAll();
 	}
 
 }

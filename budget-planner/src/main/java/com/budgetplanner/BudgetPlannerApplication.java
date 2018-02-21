@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableJpaRepositories
-@EnableTransactionManagement
 public class BudgetPlannerApplication {
 
 	public static void main(String[] args) {

@@ -1,9 +1,13 @@
 package com.budgetplanner.category.service;
 
+import java.util.List;
+
 import com.budgetplanner.domain.CategoryDTO;
 
 public interface CategoryService {
 
-	CategoryDTO add(CategoryDTO housing);
+	void save(CategoryDTO categoryDTO);
+
+	List<CategoryDTO> findAll();
 
 }

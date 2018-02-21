@@ -20,4 +20,14 @@ public class CategoryForTestsRepository {
 		return Arrays.asList(new CategoryDTO("Main Job"), new CategoryDTO("Sales"), new CategoryDTO("Investments"));
 	}
 
+	public static CategoryDTO nullCategory() {
+		return null;
+	}
+
+	public static CategoryDTO categoryWithNullName() {
+		CategoryDTO categoryWithNullName = new CategoryDTO();
+		categoryWithNullName.setName(null);
+		return categoryWithNullName;
+	}
+
 }
