@@ -20,7 +20,7 @@ public class CategoryDTO {
 	@Column(columnDefinition = "CHAR (30)", nullable = false)
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private FlowDTO flowDTO;
 
 	public CategoryDTO(Integer id, String name, TypeFlow typeCategory) {
