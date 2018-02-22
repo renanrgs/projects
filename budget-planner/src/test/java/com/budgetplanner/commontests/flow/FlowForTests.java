@@ -8,9 +8,9 @@ import org.junit.Ignore;
 import com.budgetplanner.domain.FlowDTO;
 
 @Ignore
-public class FlowForTestsRepository {
+public class FlowForTests {
 
-	public static FlowDTO validFlow() {
+	public static FlowDTO incomeFlow() {
 		FlowDTO validFlow = new FlowDTO();
 		validFlow.setName("Income");
 		return validFlow;

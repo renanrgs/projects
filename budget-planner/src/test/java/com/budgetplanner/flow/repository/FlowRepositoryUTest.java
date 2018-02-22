@@ -1,10 +1,10 @@
 package com.budgetplanner.flow.repository;
 
-import static com.budgetplanner.commontests.flow.FlowForTestsRepository.flowWithIncomeAsName;
-import static com.budgetplanner.commontests.flow.FlowForTestsRepository.flowWithNullName;
-import static com.budgetplanner.commontests.flow.FlowForTestsRepository.nullFlow;
-import static com.budgetplanner.commontests.flow.FlowForTestsRepository.twoValidFlow;
-import static com.budgetplanner.commontests.flow.FlowForTestsRepository.validFlow;
+import static com.budgetplanner.commontests.flow.FlowForTests.flowWithIncomeAsName;
+import static com.budgetplanner.commontests.flow.FlowForTests.flowWithNullName;
+import static com.budgetplanner.commontests.flow.FlowForTests.nullFlow;
+import static com.budgetplanner.commontests.flow.FlowForTests.twoValidFlow;
+import static com.budgetplanner.commontests.flow.FlowForTests.incomeFlow;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -36,7 +36,7 @@ public class FlowRepositoryUTest {
 
 	@Test
 	public void givenAValidFlowThenInsert() {
-		FlowDTO flowDTO = flowRepository.save(validFlow());
+		FlowDTO flowDTO = flowRepository.save(incomeFlow());
 		flowDTO = flowRepository.findOne(flowDTO.getId());
 		assertThat(flowDTO.getId(), notNullValue());
 	}
@@ -63,7 +63,7 @@ public class FlowRepositoryUTest {
 
 	@Test
 	public void givenAValidFlowThenDelete() {
-		FlowDTO flow = validFlow();
+		FlowDTO flow = incomeFlow();
 		assertThat(flow.getId(), nullValue());
 		flow = flowRepository.save(flow);
 		assertThat(flow.getId(), notNullValue());

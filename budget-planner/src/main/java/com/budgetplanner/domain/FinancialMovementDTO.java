@@ -46,6 +46,9 @@ public class FinancialMovementDTO implements Serializable {
 		this.id.setCategoryDTO(categoryDTO);
 	}
 
+	public FinancialMovementDTO() {
+	}
+	
 	public FinancialMovementCompositePK getId() {
 		return id;
 	}
@@ -101,6 +104,10 @@ public class FinancialMovementDTO implements Serializable {
 
 	public void setBudgets(Set<BudgetDTO> budgets) {
 		this.budgets = budgets;
+	}
+
+	public void setCategoryDTO(CategoryDTO categoryDTO) {
+		this.id.setCategoryDTO(categoryDTO);
 	}
 
 }

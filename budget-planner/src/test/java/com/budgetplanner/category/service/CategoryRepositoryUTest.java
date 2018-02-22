@@ -1,6 +1,6 @@
 package com.budgetplanner.category.service;
 
-import static com.budgetplanner.commontests.category.CategoryForTestsRepository.validCategory;
+import static com.budgetplanner.commontests.category.CategoryForTests.mainJob;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -19,8 +19,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.category.repository.CategoryRepository;
-import com.budgetplanner.commontests.category.CategoryForTestsRepository;
-import com.budgetplanner.commontests.flow.FlowForTestsRepository;
+import com.budgetplanner.commontests.category.CategoryForTests;
+import com.budgetplanner.commontests.flow.FlowForTests;
 import com.budgetplanner.domain.CategoryDTO;
 import com.budgetplanner.domain.FlowDTO;
 import com.budgetplanner.flow.repository.FlowRepository;
@@ -42,12 +42,12 @@ public class CategoryRepositoryUTest {
 
 	@Before
 	public void setUp() {
-		validFlow = flowRepository.save(FlowForTestsRepository.validFlow());
+		validFlow = flowRepository.save(FlowForTests.incomeFlow());
 	}
 
 	@Test
 	public void givenAValidCategoryThenInsert() {
-		CategoryDTO category = validCategory();
+		CategoryDTO category = mainJob();
 		category.setFlowDTO(validFlow);
 		category = categoryRepository.save(category);
 		assertThat(category.getId(), notNullValue());
@@ -57,7 +57,7 @@ public class CategoryRepositoryUTest {
 
 	@Test
 	public void givenAValidCategoryThenDelete() {
-		CategoryDTO category = validCategory();
+		CategoryDTO category = mainJob();
 		assertThat(category.getId(), nullValue());
 
 		category.setFlowDTO(validFlow);
@@ -74,7 +74,7 @@ public class CategoryRepositoryUTest {
 
 	@Test
 	public void givenACategoryListThenDeleteAll() {
-		List<CategoryDTO> categories = CategoryForTestsRepository.validCategoryList();
+		List<CategoryDTO> categories = CategoryForTests.validCategoryList();
 		categories.forEach(c -> c.setFlowDTO(validFlow));
 		categories = (List<CategoryDTO>) categoryRepository.save(categories);
 

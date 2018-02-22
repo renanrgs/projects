@@ -1,6 +1,6 @@
 package com.budgetplanner.budget.service;
 
-import static com.budgetplanner.commontests.budget.BudgetForTestsService.*;
+import static com.budgetplanner.commontests.budget.BudgetForTests.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.doAnswer;
@@ -20,18 +20,17 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.budget.repository.BudgetRepository;
-import com.budgetplanner.commontests.budget.BudgetForTestsService;
+import com.budgetplanner.commontests.budget.BudgetForTests;
 import com.budgetplanner.domain.BudgetDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BudgetUTest {
 
-	@MockBean
+	@Autowired
 	private BudgetRepository budgetRepository;
 
 	@Autowired
-	@InjectMocks
 	private BudgetService budgetService;
 
 	private List<BudgetDTO> budgets;
@@ -43,18 +42,7 @@ public class BudgetUTest {
 
 	@Test
 	public void insertValidBudget() {
-		// final List<BudgetDTO> budgets = new ArrayList<>();
-		doAnswer(new Answer<List<BudgetDTO>>() {
-			@Override
-			public List<BudgetDTO> answer(InvocationOnMock invocation) throws Throwable {
-				BudgetDTO budgetDTO = (BudgetDTO) invocation.getArguments()[0];
-				budgets.add(budgetDTO);
-				return budgets;
-			}
-		}).when(budgetRepository).insert(validBudget());
 		
-		budgetService.insert(validBudget());
-		assertThat(budgets.size(), equalTo(1));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -69,6 +57,6 @@ public class BudgetUTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenBudgetIncomeIsEmpty() {
-		budgetService.insert(BudgetForTestsService.budgetWithEmptyIncome());
+		budgetService.insert(BudgetForTests.budgetWithEmptyIncome());
 	}
 }

@@ -2,28 +2,28 @@ package com.budgetplanner.commontests.balance;
 
 import java.util.List;
 
-import com.budgetplanner.commontests.budget.BudgetForTestsService;
+import com.budgetplanner.commontests.budget.BudgetForTests;
 import com.budgetplanner.domain.BudgetDTO;
 
 public class BalanceForTestsService {
 
 	public static BudgetDTO validBudget() {
-		return BudgetForTestsService.validBudget();
+		return BudgetForTests.validBudget();
 	}
 
 	public static List<BudgetDTO> validBudgetList(){
-		return BudgetForTestsService.validBudgetList();
+		return BudgetForTests.validBudgetList();
 	}
 	
 	public static BudgetDTO nullBudget() {
-		return BudgetForTestsService.nullBudget();
+		return BudgetForTests.nullBudget();
 	}
 	
 	public static BudgetDTO budgetWithoutIncomeCategories() {
-		return BudgetForTestsService.budgetWithoutIncomeCategories();
+		return BudgetForTests.budgetWithoutIncomeCategories();
 	}
 	
 	public static BudgetDTO budgetWithEmptyIncomeSubCategories() {
-		return BudgetForTestsService.budgetWithEmptyIncomeSubCategories();
+		return BudgetForTests.budgetWithEmptyIncomeSubCategories();
 	}
 }

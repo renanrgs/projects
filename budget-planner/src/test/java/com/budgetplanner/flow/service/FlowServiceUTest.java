@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.commontests.flow.FlowForTestsRepository;
+import com.budgetplanner.commontests.flow.FlowForTests;
 
-import static com.budgetplanner.commontests.flow.FlowForTestsRepository.*;
+import static com.budgetplanner.commontests.flow.FlowForTests.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,7 +28,7 @@ public class FlowServiceUTest {
 
 	@Test
 	public void givenAValidFlowThenSave() {
-		flowService.save(validFlow());
+		flowService.save(incomeFlow());
 		assertThat(flowService.findAll().size(), equalTo(1));
 	}
 
@@ -41,12 +41,12 @@ public class FlowServiceUTest {
 	@Test
 	public void givenAFlowWithNullNameThrowsException() {
 		exception.expect(IllegalArgumentException.class);
-		flowService.save(FlowForTestsRepository.flowWithNullName());
+		flowService.save(FlowForTests.flowWithNullName());
 	}
 
 	@Test
 	public void givenAFlowWithEmptyNameThrowsException() {
 		exception.expect(IllegalArgumentException.class);
-		flowService.save(FlowForTestsRepository.flowWithEmptyName());
+		flowService.save(FlowForTests.flowWithEmptyName());
 	}
 }

@@ -13,10 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.commontests.category.CategoryForTestsRepository;
+import com.budgetplanner.commontests.category.CategoryForTests;
 import com.budgetplanner.domain.CategoryDTO;
-import com.budgetplanner.domain.FlowDTO;
-import com.budgetplanner.flow.repository.FlowRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -32,7 +30,7 @@ public class CategoryServiceUTest {
 
 	@Test
 	public void addNewValidCategory() {
-		CategoryDTO categoryDTO = CategoryForTestsRepository.validCategory();
+		CategoryDTO categoryDTO = CategoryForTests.mainJob();
 		assertThat(categoryDTO.getId(), nullValue());
 		categoryService.save(categoryDTO);
 		List<CategoryDTO> categories = categoryService.findAll();
@@ -41,12 +39,12 @@ public class CategoryServiceUTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void givenNullCategoryThrowsException() {
-		categoryService.save(CategoryForTestsRepository.nullCategory());
+		categoryService.save(CategoryForTests.nullCategory());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void givenCategoryWithNullName() {
-		categoryService.save(CategoryForTestsRepository.categoryWithNullName());
+		categoryService.save(CategoryForTests.categoryWithNullName());
 	}
 
 }
