@@ -1,5 +1,6 @@
 package com.budgetplanner.domain;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -11,14 +12,27 @@ public class BalanceDTO {
 	@EmbeddedId
 	private BalanceCompositePK id;
 
+	@Column(name = "amount")
 	private Double amount;
 
+	@Column(name = "total_income")
 	private Double totalIncome;
+
+	@Column(name = "total_expense")
 	private Double totalExpense;
 
 	public BalanceDTO(BudgetDTO budgetDTO) {
 		this.id = new BalanceCompositePK();
 		this.id.setBudgetDTO(budgetDTO);
+	}
+
+	public BalanceDTO(BudgetDTO budget, FinancialMovementDTO financialMovement) {
+		this.id = new BalanceCompositePK();
+		this.getId().setBudgetDTO(budget);
+		this.getId().setFinancialMovementDTO(financialMovement);
+	}
+	
+	public BalanceDTO() {
 	}
 
 	@Override
@@ -82,6 +96,14 @@ public class BalanceDTO {
 
 	public void setTotalIncome(Double totalIncome) {
 		this.totalIncome = totalIncome;
+	}
+
+	public void setBudget(BudgetDTO budget) {
+		this.getId().setBudgetDTO(budget);
+	}
+
+	public void setFinancialMovement(FinancialMovementDTO financialMovement) {
+		this.id.setFinancialMovementDTO(financialMovement);
 	}
 
 }

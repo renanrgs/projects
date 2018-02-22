@@ -15,7 +15,6 @@ public class BudgetServiceImpl implements BudgetService {
 	@Override
 	public void insert(BudgetDTO budget) {
 		validate(budget);
-		budgetRepository.insert(budget);
 	}
 
 	private void validate(BudgetDTO budget) {

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
-//TODO Bidirectional relationship need to be coded.
+//TODO Bidirectional relationship is required here.
 @Embeddable
 public class BalanceCompositePK implements Serializable {
 
@@ -15,7 +15,7 @@ public class BalanceCompositePK implements Serializable {
 	private BudgetDTO budgetDTO;
 
 	@ManyToOne
-	private FinancialMovementDTO subCategoryDTO;
+	private FinancialMovementDTO financialMovement;
 
 	public BudgetDTO getBudgetDTO() {
 		return budgetDTO;
@@ -25,12 +25,12 @@ public class BalanceCompositePK implements Serializable {
 		this.budgetDTO = budgetDTO;
 	}
 
-	public FinancialMovementDTO getSubCategoryDTO() {
-		return subCategoryDTO;
+	public FinancialMovementDTO getFinancialMovementDTO() {
+		return financialMovement;
 	}
 
-	public void setSubCategoryDTO(FinancialMovementDTO subCategoryDTO) {
-		this.subCategoryDTO = subCategoryDTO;
+	public void setFinancialMovementDTO(FinancialMovementDTO financialMovement) {
+		this.financialMovement = financialMovement;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class BalanceCompositePK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((budgetDTO == null) ? 0 : budgetDTO.hashCode());
-		result = prime * result + ((subCategoryDTO == null) ? 0 : subCategoryDTO.hashCode());
+		result = prime * result + ((financialMovement == null) ? 0 : financialMovement.hashCode());
 		return result;
 	}
 
@@ -56,10 +56,10 @@ public class BalanceCompositePK implements Serializable {
 				return false;
 		} else if (!budgetDTO.equals(other.budgetDTO))
 			return false;
-		if (subCategoryDTO == null) {
-			if (other.subCategoryDTO != null)
+		if (financialMovement == null) {
+			if (other.financialMovement != null)
 				return false;
-		} else if (!subCategoryDTO.equals(other.subCategoryDTO))
+		} else if (!financialMovement.equals(other.financialMovement))
 			return false;
 		return true;
 	}

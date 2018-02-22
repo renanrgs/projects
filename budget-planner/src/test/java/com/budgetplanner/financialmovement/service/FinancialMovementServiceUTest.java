@@ -1,10 +1,10 @@
 package com.budgetplanner.financialmovement.service;
 
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.financialMovementIdLowerThanZero;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.financialMovementWithIdGreaterThan200;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.financialMovementWithNullIdAndName;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.nullFinancialMovement;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTestsService.rent;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.financialMovementIdLowerThanZero;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.financialMovementWithIdGreaterThan200;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.financialMovementWithNullIdAndName;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.nullFinancialMovement;
+import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.rent;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import com.budgetplanner.financialmovement.service.FinancialMovementService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FinancialMovementServiceUTest {
-	
+
 	@Mock
 	private FinancialMovementRepository subCategoryRepository;
 

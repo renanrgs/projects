@@ -27,6 +27,12 @@ public class BudgetDTO {
 		this.id.setYear(period.getYear());
 	}
 
+	public BudgetDTO(Integer month, Integer year) {
+		this.id = new BudgetCompositePK();
+		this.id.setMonth(month);
+		this.id.setYear(year);
+	}
+
 	public BudgetCompositePK getId() {
 		return id;
 	}
