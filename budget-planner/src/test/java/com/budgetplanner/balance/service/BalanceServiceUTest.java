@@ -1,10 +1,10 @@
 package com.budgetplanner.balance.service;
 
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.budgetWithEmptyIncomeSubCategories;
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.budgetWithoutIncomeCategories;
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.nullBudget;
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudget;
-import static com.budgetplanner.commontests.balance.BalanceForTestsService.validBudgetList;
+import static com.budgetplanner.commontests.balance.BalanceForTests.budgetWithEmptyIncomeSubCategories;
+import static com.budgetplanner.commontests.balance.BalanceForTests.budgetWithoutIncomeCategories;
+import static com.budgetplanner.commontests.balance.BalanceForTests.nullBudget;
+import static com.budgetplanner.commontests.balance.BalanceForTests.validBudget;
+import static com.budgetplanner.commontests.balance.BalanceForTests.validBudgetList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
