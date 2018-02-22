@@ -32,9 +32,9 @@ public class FinancialMovementDTO implements Serializable {
 	private Double amount;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "budget_subcategory", joinColumns = { @JoinColumn(name = "budget_month"),
-			@JoinColumn(name = "budget_year") }, inverseJoinColumns = { @JoinColumn(name = "subcategory_id"),
-					@JoinColumn(name = "subcategory_category_id") })
+	@JoinTable(name = "budget_financialmov", joinColumns = { @JoinColumn(name = "budget_month"),
+			@JoinColumn(name = "budget_year") }, inverseJoinColumns = { @JoinColumn(name = "financialmov_id"),
+					@JoinColumn(name = "financialmov_category_id") })
 	private Set<BudgetDTO> budgets = new HashSet<>();
 
 	public FinancialMovementDTO(Integer id, String name, Double amount, CategoryDTO categoryDTO) {
