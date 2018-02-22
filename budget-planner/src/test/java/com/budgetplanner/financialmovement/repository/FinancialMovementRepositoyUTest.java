@@ -1,17 +1,17 @@
 package com.budgetplanner.financialmovement.repository;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.budget.repository.BudgetRepository;
@@ -19,16 +19,22 @@ import com.budgetplanner.category.repository.CategoryRepository;
 import com.budgetplanner.commontests.budget.BudgetForTests;
 import com.budgetplanner.commontests.category.CategoryForTests;
 import com.budgetplanner.commontests.financialmovement.FinancialMovementForTests;
+import com.budgetplanner.commontests.flow.FlowForTests;
 import com.budgetplanner.domain.BudgetDTO;
 import com.budgetplanner.domain.CategoryDTO;
 import com.budgetplanner.domain.FinancialMovementDTO;
+import com.budgetplanner.domain.FlowDTO;
+import com.budgetplanner.flow.repository.FlowRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@DataJpaTest
 public class FinancialMovementRepositoyUTest {
 
 	@Autowired
 	private FinancialMovementRepository financialMovementRepository;
+
+	@Autowired
+	private FlowRepository flowRepository;
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -36,13 +42,18 @@ public class FinancialMovementRepositoyUTest {
 	@Autowired
 	private BudgetRepository budgetRepository;
 
-	Set<BudgetDTO> budgets;
+	private Set<BudgetDTO> budgets;
 
-	CategoryDTO mainJob;
+	private CategoryDTO mainJob;
+
+	private FlowDTO incomeFlow;
 
 	@Before
 	public void setUp() {
-		mainJob = categoryRepository.save(CategoryForTests.mainJob());
+		incomeFlow = flowRepository.save(FlowForTests.incomeFlow());
+		mainJob = CategoryForTests.mainJob();
+		mainJob.setFlowDTO(incomeFlow);
+		categoryRepository.save(mainJob);
 		budgetRepository.save(BudgetForTests.validBudget());
 		budgets = new HashSet<>();
 		budgetRepository.findAll().forEach(budget -> budgets.add(budget));
