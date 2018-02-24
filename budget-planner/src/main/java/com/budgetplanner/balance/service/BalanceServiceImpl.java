@@ -33,9 +33,11 @@ public class BalanceServiceImpl implements BalanceService {
 	}
 
 	private Double calculateTotal(Set<FinancialMovementDTO> financialMovements, TypeFlow flowDTO) {
-		return financialMovements.stream().peek(System.out::println).peek((f -> System.out.println(f.getId().getCategoryDTO().getFlowDTO())))
-				.filter(financialMovement -> financialMovement.getId().getCategoryDTO().getFlowDTO().equals(flowDTO.getFlowDTO())).peek(System.out::println)
-				.reduce(0.0, (acc, financialMovement) -> acc + financialMovement.getAmount(), (amount1, amount2) -> amount1 + amount2);
+		return financialMovements.stream().peek(System.out::println)
+				.filter(financialMovement -> financialMovement.getId().getCategoryDTO().getFlowDTO()
+						.equals(flowDTO.getFlowDTO()))
+				.reduce(0.0, (acc, financialMovement) -> acc + financialMovement.getAmount(),
+						(amount1, amount2) -> amount1 + amount2);
 
 	}
 
