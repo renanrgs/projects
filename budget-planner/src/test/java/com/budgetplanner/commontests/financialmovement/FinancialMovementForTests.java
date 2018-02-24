@@ -65,4 +65,17 @@ public class FinancialMovementForTests {
 		return financialMovements;
 	}
 
+	public static Set<FinancialMovementDTO> financialMovementsWithoutIncome() {
+		Set<FinancialMovementDTO> financialMovements = new HashSet<>();
+		financialMovements.add(electricity());
+		financialMovements.add(rent());
+		return financialMovements;
+	}
+
+	public static Set<FinancialMovementDTO> financialMovementsWithoutExpense() {
+		Set<FinancialMovementDTO> financialMovements = new HashSet<>();
+		financialMovements.add(netSalaryFromSales());
+		return financialMovements;
+	}
+
 }

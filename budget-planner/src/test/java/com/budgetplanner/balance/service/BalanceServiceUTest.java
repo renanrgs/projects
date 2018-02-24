@@ -40,15 +40,15 @@ public class BalanceServiceUTest {
 	}
 
 	@Test
-	public void givenBudgetWithoutIncomeCategoriesReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculateTotal(budgetWithoutIncomeCategories());
+	public void givenBudgetWithoutIncomeReturnBalanceAmount() {
+		BalanceDTO balanceDTO = balanceService.calculateTotal(BudgetForTestsService.validBudgetWithoutIncome());
 		assertThat(balanceDTO.getAmount(), equalTo(-2100.0));
 	}
 
 	@Test
-	public void givenBudgetWithoutIncomeSubCategoriesReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculateTotal(budgetWithEmptyIncomeSubCategories());
-		assertThat(balanceDTO.getAmount(), equalTo(-2100.0));
+	public void givenBudgetWithoutExpenseReturnBalanceAmount() {
+		BalanceDTO balanceDTO = balanceService.calculateTotal(BudgetForTestsService.budgetWithoutExpense());
+		assertThat(balanceDTO.getAmount(), equalTo(3500.0));
 	}
 
 }

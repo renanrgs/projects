@@ -10,5 +10,17 @@ public class BudgetForTestsService {
 		budgetDTO.setFinancialMovements(FinancialMovementForTests.financialMovements());
 		return budgetDTO;
 	}
+	
+	public static BudgetDTO validBudgetWithoutIncome() {
+		BudgetDTO budgetDTO = new BudgetDTO(1, 2018);
+		budgetDTO.setFinancialMovements(FinancialMovementForTests.financialMovementsWithoutIncome());
+		return budgetDTO;
+	}
+
+	public static BudgetDTO budgetWithoutExpense() {
+		BudgetDTO budgetDTO = new BudgetDTO(1, 2018);
+		budgetDTO.setFinancialMovements(FinancialMovementForTests.financialMovementsWithoutExpense());
+		return budgetDTO;
+	}
 
 }
