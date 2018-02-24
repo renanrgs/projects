@@ -1,7 +1,5 @@
 package com.budgetplanner.balance.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
@@ -38,16 +36,6 @@ public class BalanceServiceImpl implements BalanceService {
 						.equals(flowDTO.getFlowDTO()))
 				.reduce(0.0, (acc, financialMovement) -> acc + financialMovement.getAmount(),
 						(amount1, amount2) -> amount1 + amount2);
-
 	}
 
-	@Override
-	public List<BalanceDTO> list(List<BudgetDTO> validBudgetList) {
-		List<BalanceDTO> listBalance = new ArrayList<>();
-		validBudgetList.forEach((budget) -> {
-			BalanceDTO balance = calculateTotal(budget);
-			listBalance.add(balance);
-		});
-		return listBalance;
-	}
 }
