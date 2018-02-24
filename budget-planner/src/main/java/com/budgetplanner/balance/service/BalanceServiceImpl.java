@@ -15,11 +15,11 @@ import com.budgetplanner.domain.FinancialMovementDTO;
 public class BalanceServiceImpl implements BalanceService {
 
 	@Override
-	public BalanceDTO calculateTotal(BudgetDTO budget) {
+	public BalanceDTO calculateTotal(List<FinancialMovementDTO> financialMovements) {
 		validate(budget);
 		BalanceDTO balance = new BalanceDTO(budget);
-		Double totalIncome = calculateTotal(budget.getSubcategories(), TypeFlow.INCOME);
-		Double totalExpense = calculateTotal(budget.getSubcategories(), TypeFlow.EXPENSE);
+		Double totalIncome = calculateTotal(financialMovements);
+		Double totalExpense = calculateTotal(financialMovements);
 		balance.setTotalIncome(totalIncome);
 		balance.setTotalExpense(totalExpense);
 		balance.setAmount(totalIncome - totalExpense);
@@ -33,7 +33,8 @@ public class BalanceServiceImpl implements BalanceService {
 	}
 
 	private Double calculateTotal(Set<FinancialMovementDTO> subCategory, TypeFlow flowDTO) {
-		return subCategory.stream().filter(sub -> sub.getId().getCategoryDTO().getFlowDTO().equals(flowDTO.getFlowDTO()))
+		return subCategory.stream()
+				.filter(sub -> sub.getId().getCategoryDTO().getFlowDTO().equals(flowDTO.getFlowDTO()))
 				.reduce(0.0, (acc, sub) -> acc + sub.getAmount(), (amount1, amount2) -> amount1 + amount2);
 
 	}

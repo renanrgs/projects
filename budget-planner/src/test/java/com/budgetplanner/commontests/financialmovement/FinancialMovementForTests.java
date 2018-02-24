@@ -1,5 +1,8 @@
 package com.budgetplanner.commontests.financialmovement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Ignore;
 
 import com.budgetplanner.commontests.category.CategoryForTests;
@@ -53,4 +56,13 @@ public class FinancialMovementForTests {
 				CategoryForTests.mainJob());
 		return financialMovement;
 	}
+
+	public static List<FinancialMovementDTO> financialMovements() {
+		List<FinancialMovementDTO> financialMovements = new ArrayList<>();
+		financialMovements.add(electricity());
+		financialMovements.add(validFinancialMovement());
+		financialMovements.add(rent());
+		return financialMovements;
+	}
+
 }
