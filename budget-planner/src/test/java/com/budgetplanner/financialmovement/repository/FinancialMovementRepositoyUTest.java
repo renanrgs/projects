@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.budget.repository.BudgetRepository;
 import com.budgetplanner.category.repository.CategoryRepository;
-import com.budgetplanner.commontests.budget.BudgetForTests;
+import com.budgetplanner.commontests.budget.BudgetForTestsRepository;
 import com.budgetplanner.commontests.category.CategoryForTests;
 import com.budgetplanner.commontests.financialmovement.FinancialMovementForTests;
 import com.budgetplanner.commontests.flow.FlowForTests;
@@ -54,7 +54,7 @@ public class FinancialMovementRepositoyUTest {
 		mainJob = CategoryForTests.mainJob();
 		mainJob.setFlowDTO(incomeFlow);
 		categoryRepository.save(mainJob);
-		budgetRepository.save(BudgetForTests.validBudget());
+		budgetRepository.save(BudgetForTestsRepository.validBudget());
 		budgets = new HashSet<>();
 		budgetRepository.findAll().forEach(budget -> budgets.add(budget));
 	}

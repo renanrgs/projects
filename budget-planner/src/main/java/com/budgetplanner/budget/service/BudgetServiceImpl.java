@@ -18,7 +18,6 @@ public class BudgetServiceImpl implements BudgetService {
 	}
 
 	private void validate(BudgetDTO budget) {
-		//TODO 
 		if(budget == null ) throw new IllegalArgumentException();
 	}
 

@@ -1,7 +1,7 @@
 package com.budgetplanner.budget.service;
 
-import static com.budgetplanner.commontests.budget.BudgetForTests.budgetWithNullIncome;
-import static com.budgetplanner.commontests.budget.BudgetForTests.nullBudget;
+import static com.budgetplanner.commontests.budget.BudgetForTestsRepository.budgetWithNullIncome;
+import static com.budgetplanner.commontests.budget.BudgetForTestsRepository.nullBudget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.budget.repository.BudgetRepository;
-import com.budgetplanner.commontests.budget.BudgetForTests;
+import com.budgetplanner.commontests.budget.BudgetForTestsRepository;
 import com.budgetplanner.domain.BudgetDTO;
 
 @RunWith(SpringRunner.class)
@@ -51,6 +51,6 @@ public class BudgetUTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenBudgetIncomeIsEmpty() {
-		budgetService.insert(BudgetForTests.budgetWithEmptyIncome());
+		budgetService.insert(BudgetForTestsRepository.budgetWithEmptyIncome());
 	}
 }

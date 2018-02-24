@@ -1,8 +1,9 @@
 package com.budgetplanner.balance.service;
 
-import static com.budgetplanner.commontests.balance.BalanceForTests.budgetWithEmptyIncomeSubCategories;
-import static com.budgetplanner.commontests.balance.BalanceForTests.budgetWithoutIncomeCategories;
-import static com.budgetplanner.commontests.balance.BalanceForTests.nullBudget;
+import static com.budgetplanner.commontests.budget.BudgetForTestsService.budgetWithoutExpense;
+import static com.budgetplanner.commontests.budget.BudgetForTestsService.nullBudget;
+import static com.budgetplanner.commontests.budget.BudgetForTestsService.validBudget;
+import static com.budgetplanner.commontests.budget.BudgetForTestsService.validBudgetWithoutIncome;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -14,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.commontests.budget.BudgetForTestsService;
 import com.budgetplanner.domain.BalanceDTO;
 
 @RunWith(SpringRunner.class)
@@ -29,7 +29,7 @@ public class BalanceServiceUTest {
 
 	@Test
 	public void givenValidBudgetThenReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculateTotal(BudgetForTestsService.validBudget());
+		BalanceDTO balanceDTO = balanceService.calculateTotal(validBudget());
 		assertThat(balanceDTO.getAmount(), equalTo(1400.0));
 	}
 
@@ -41,13 +41,13 @@ public class BalanceServiceUTest {
 
 	@Test
 	public void givenBudgetWithoutIncomeReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculateTotal(BudgetForTestsService.validBudgetWithoutIncome());
+		BalanceDTO balanceDTO = balanceService.calculateTotal(validBudgetWithoutIncome());
 		assertThat(balanceDTO.getAmount(), equalTo(-2100.0));
 	}
 
 	@Test
 	public void givenBudgetWithoutExpenseReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculateTotal(BudgetForTestsService.budgetWithoutExpense());
+		BalanceDTO balanceDTO = balanceService.calculateTotal(budgetWithoutExpense());
 		assertThat(balanceDTO.getAmount(), equalTo(3500.0));
 	}
 

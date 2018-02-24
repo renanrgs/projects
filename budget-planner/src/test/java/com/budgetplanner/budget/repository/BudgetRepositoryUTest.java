@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.commontests.budget.BudgetForTests;
+import com.budgetplanner.commontests.budget.BudgetForTestsRepository;
 import com.budgetplanner.domain.BudgetDTO;
 
 @RunWith(SpringRunner.class)
@@ -23,7 +23,7 @@ public class BudgetRepositoryUTest {
 
 	@Test
 	public void givenValidBudgetThenInsert() {
-		budgetRepository.save(BudgetForTests.validBudget());
+		budgetRepository.save(BudgetForTestsRepository.validBudget());
 		List<BudgetDTO> budgets = (List<BudgetDTO>) budgetRepository.findAll();
 		assertThat(budgets.size(), equalTo(1));
 	}

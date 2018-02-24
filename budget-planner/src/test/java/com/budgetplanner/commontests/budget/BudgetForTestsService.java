@@ -22,5 +22,9 @@ public class BudgetForTestsService {
 		budgetDTO.setFinancialMovements(FinancialMovementForTests.financialMovementsWithoutExpense());
 		return budgetDTO;
 	}
+	
+	public static BudgetDTO nullBudget() {
+		return null;
+	}
 
 }
