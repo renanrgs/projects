@@ -8,13 +8,13 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.budget.repository.BudgetRepository;
+import com.budgetplanner.category.repository.CategoryRepository;
 import com.budgetplanner.commontests.balance.BalanceForTests;
-import com.budgetplanner.commontests.budget.BudgetForTests;
 import com.budgetplanner.commontests.financialmovement.FinancialMovementForTests;
 import com.budgetplanner.domain.BalanceDTO;
 import com.budgetplanner.domain.BudgetDTO;
 import com.budgetplanner.domain.FinancialMovementDTO;
-import com.budgetplanner.financialmovement.repository.FinancialMovementRepository;
+import com.budgetplanner.flow.repository.FlowRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -31,13 +31,15 @@ public class BalanceRepositoryUTest {
 	private BudgetRepository budgetRepository;
 
 	@Autowired
-	private FinancialMovementRepository financialMovementRepository;
+	private FlowRepository flowRepository;
 
-	//TODO Required FinancialMovement dependencies implementation to work. 
+	@Autowired
+	private CategoryRepository categoryRepository;
+
 	@Before
 	public void setUp() {
-		budget = budgetRepository.save(BudgetForTests.validBudget());
-		financialMovement = financialMovementRepository.save(FinancialMovementForTests.validFinancialMovement());
+		BalanceForTests.setDependecies(FinancialMovementForTests.validFinancialMovement(), flowRepository,
+				categoryRepository, budgetRepository);
 	}
 
 	@Test
