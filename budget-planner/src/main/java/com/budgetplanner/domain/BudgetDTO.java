@@ -17,7 +17,7 @@ public class BudgetDTO {
 	private BudgetCompositePK id;
 
 	@ManyToMany(mappedBy = "budgets")
-	private Set<FinancialMovementDTO> subcategories = new HashSet<>();
+	private Set<FinancialMovementDTO> financialMovements = new HashSet<>();
 
 	public BudgetDTO() {
 		super();
@@ -41,12 +41,12 @@ public class BudgetDTO {
 		this.id = id;
 	}
 
-	public Set<FinancialMovementDTO> getSubcategories() {
-		return subcategories;
+	public Set<FinancialMovementDTO> getFinancialMovements() {
+		return financialMovements;
 	}
 
-	public void setSubcategories(Set<FinancialMovementDTO> subcategories) {
-		this.subcategories = subcategories;
+	public void setFinancialMovements(Set<FinancialMovementDTO> financialMovements) {
+		this.financialMovements = financialMovements;
 	}
 
 	@Override

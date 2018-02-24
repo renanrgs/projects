@@ -3,7 +3,6 @@ package com.budgetplanner.balance.service;
 import static com.budgetplanner.commontests.balance.BalanceForTests.budgetWithEmptyIncomeSubCategories;
 import static com.budgetplanner.commontests.balance.BalanceForTests.budgetWithoutIncomeCategories;
 import static com.budgetplanner.commontests.balance.BalanceForTests.nullBudget;
-import static com.budgetplanner.commontests.balance.BalanceForTests.validBudget;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -15,9 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.commontests.financialmovement.FinancialMovementForTests;
+import com.budgetplanner.commontests.budget.BudgetForTestsService;
 import com.budgetplanner.domain.BalanceDTO;
-import com.budgetplanner.domain.FinancialMovementDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,11 +26,11 @@ public class BalanceServiceUTest {
 
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
-	
+
 	@Test
-	public void givenValidsFinancialMovementsThenReturnBalanceAmount() {
-		BalanceDTO balanceDTO = balanceService.calculateTotal(FinancialMovementForTests.financialMovements());
-		assertThat(balanceDTO.getAmount(), equalTo(5400.0));
+	public void givenValidBudgetThenReturnBalanceAmount() {
+		BalanceDTO balanceDTO = balanceService.calculateTotal(BudgetForTestsService.validBudget());
+		assertThat(balanceDTO.getAmount(), equalTo(1400.0));
 	}
 
 	@Test

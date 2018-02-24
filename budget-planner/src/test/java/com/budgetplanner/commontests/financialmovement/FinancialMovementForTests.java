@@ -1,7 +1,7 @@
 package com.budgetplanner.commontests.financialmovement;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Ignore;
 
@@ -57,10 +57,10 @@ public class FinancialMovementForTests {
 		return financialMovement;
 	}
 
-	public static List<FinancialMovementDTO> financialMovements() {
-		List<FinancialMovementDTO> financialMovements = new ArrayList<>();
+	public static Set<FinancialMovementDTO> financialMovements() {
+		Set<FinancialMovementDTO> financialMovements = new HashSet<>();
 		financialMovements.add(electricity());
-		financialMovements.add(validFinancialMovement());
+		financialMovements.add(netSalaryFromSales());
 		financialMovements.add(rent());
 		return financialMovements;
 	}
