@@ -1,5 +1,7 @@
 package com.budgetplanner.budget.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +13,21 @@ public class BudgetServiceImpl implements BudgetService {
 
 	@Autowired
 	private BudgetRepository budgetRepository;
-	
-	@Override
-	public void insert(BudgetDTO budget) {
-		validate(budget);
-	}
 
 	private void validate(BudgetDTO budget) {
-		if(budget == null ) throw new IllegalArgumentException();
+		if (budget == null)
+			throw new IllegalArgumentException();
+	}
+
+	@Override
+	public void save(BudgetDTO budget) {
+		validate(budget);
+		budgetRepository.save(budget);
+	}
+
+	@Override
+	public List<BudgetDTO> findAll() {
+		return (List<BudgetDTO>) budgetRepository.findAll();
 	}
 
 }

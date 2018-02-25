@@ -2,55 +2,47 @@ package com.budgetplanner.budget.service;
 
 import static com.budgetplanner.commontests.budget.BudgetForTestsRepository.budgetWithNullIncome;
 import static com.budgetplanner.commontests.budget.BudgetForTestsRepository.nullBudget;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.budget.repository.BudgetRepository;
 import com.budgetplanner.commontests.budget.BudgetForTestsRepository;
+import com.budgetplanner.commontests.budget.BudgetForTestsService;
 import com.budgetplanner.domain.BudgetDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BudgetUTest {
-
-	@Autowired
-	private BudgetRepository budgetRepository;
+public class BudgetServiceUTest {
 
 	@Autowired
 	private BudgetService budgetService;
 
-	private List<BudgetDTO> budgets;
-
-	@Before
-	public void setUp() {
-		budgets = new ArrayList<>();
-	}
-
 	@Test
-	public void insertValidBudget() {
-		
+	public void givenValidBudgetThenSave() {
+		budgetService.save(BudgetForTestsService.validBudget());
+		List<BudgetDTO> budgets = budgetService.findAll();
+		assertThat(budgets.size(), equalTo(1));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenBudgetIsNull() {
-		budgetService.insert(nullBudget());
+		budgetService.save(nullBudget());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenBudgetIncomeIsNull() {
-		budgetService.insert(budgetWithNullIncome());
+		budgetService.save(budgetWithNullIncome());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void insertThrowsExceptionWhenBudgetIncomeIsEmpty() {
-		budgetService.insert(BudgetForTestsRepository.budgetWithEmptyIncome());
+		budgetService.save(BudgetForTestsRepository.budgetWithEmptyIncome());
 	}
 }
