@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.budgetplanner.category.constants.TypeFlow;
+
 @Entity(name = "FinalcialMovementDTO")
 @Table(name = "financial_movement")
 public class FinancialMovementDTO implements Serializable {
@@ -109,5 +111,11 @@ public class FinancialMovementDTO implements Serializable {
 	public void setCategoryDTO(CategoryDTO categoryDTO) {
 		this.id.setCategoryDTO(categoryDTO);
 	}
+
+	public CategoryDTO getCategoryDTO() {
+		return this.id.getCategoryDTO();
+	}
+	
+	
 
 }

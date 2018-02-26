@@ -50,5 +50,5 @@ public class BalanceServiceUTest {
 		BalanceDTO balanceDTO = balanceService.calculateTotal(budgetWithoutExpense());
 		assertThat(balanceDTO.getAmount(), equalTo(3500.0));
 	}
-
+	
 }

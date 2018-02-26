@@ -1,12 +1,10 @@
 package com.budgetplanner.category.service;
 
-import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +25,14 @@ public class CategoryServiceUTest {
 
 	@Autowired
 	private FlowService flowService;
-	
-	@Before
-	public void setUp() {
-		flowService.save(FlowForTests.incomeFlow());
-	}
 
 	@Test
-	public void addNewValidCategory() {
+	public void givenValidCategoryThenSave() {
+		flowService.save(FlowForTests.incomeFlow());
 		CategoryDTO categoryDTO = CategoryForTests.menialJob();
-		assertThat(categoryDTO.getId(), nullValue());
 		categoryService.save(categoryDTO);
 		List<CategoryDTO> categories = categoryService.findAll();
-		assertThat(categories.size(), CoreMatchers.equalTo(1));
+		assertThat(categories.size(), equalTo(1));
 	}
 
 	@Test(expected = IllegalArgumentException.class)

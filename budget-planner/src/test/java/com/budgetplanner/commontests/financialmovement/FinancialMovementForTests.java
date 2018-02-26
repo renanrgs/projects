@@ -35,7 +35,7 @@ public class FinancialMovementForTests {
 	}
 
 	public static FinancialMovementDTO financialMovementIdLowerThanZero() {
-		return new FinancialMovementDTO(-2, "test", 0.0, CategoryForTests.housing());
+		return new FinancialMovementDTO(1, "test", -10.0, CategoryForTests.housing());
 	}
 
 	public static FinancialMovementDTO financialMovementWithIdGreaterThan200() {

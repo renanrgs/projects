@@ -1,55 +1,50 @@
 package com.budgetplanner.financialmovement.service;
 
 import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.financialMovementIdLowerThanZero;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.financialMovementWithIdGreaterThan200;
-import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.financialMovementWithNullIdAndName;
 import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.nullFinancialMovement;
 import static com.budgetplanner.commontests.financialmovement.FinancialMovementForTests.rent;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.budgetplanner.financialmovement.repository.FinancialMovementRepository;
-import com.budgetplanner.financialmovement.service.FinancialMovementService;
+import com.budgetplanner.category.service.CategoryService;
+import com.budgetplanner.commontests.flow.FlowForTests;
+import com.budgetplanner.flow.service.FlowService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FinancialMovementServiceUTest {
 
-	@Mock
-	private FinancialMovementRepository subCategoryRepository;
+	@Autowired
+	private FinancialMovementService financialMovementService;
 
 	@Autowired
-	@InjectMocks
-	private FinancialMovementService subCategoryService;
+	private FlowService flowService;
+
+	@Autowired
+	private CategoryService categoryService;
 
 	@Test
-	public void saveNewValidSubCategoryTest() {
-		subCategoryService.save(rent());
+	public void givenAValidFinancialMovementThenSave() {
+		flowService.save(FlowForTests.incomeFlow());
+		flowService.save(FlowForTests.expenseFlow());
+
+		categoryService.save(rent().getCategoryDTO());
+
+		financialMovementService.save(rent());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void throwsExceptionWhensaveingNullSubCategory() {
-		subCategoryService.save(nullFinancialMovement());
+	public void givenNullFinancialMovementThenThrowsException() {
+		financialMovementService.save(nullFinancialMovement());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void throwsExceptionWhensaveingNullIdAndName() {
-		subCategoryService.save(financialMovementWithNullIdAndName());
+	public void givenMovementAmountLowerThanZeroThrowsException() {
+		financialMovementService.save(financialMovementIdLowerThanZero());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void throwsExceptionWhenIdIsLowerThanZero() {
-		subCategoryService.save(financialMovementIdLowerThanZero());
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void throwsExceptionWhenIdIsGreaterThan200() {
-		subCategoryService.save(financialMovementWithIdGreaterThan200());
-	}
 }
