@@ -10,4 +10,6 @@ public interface CategoryService {
 
 	List<CategoryDTO> findAll();
 
+	CategoryDTO findById(Integer id);
+
 }

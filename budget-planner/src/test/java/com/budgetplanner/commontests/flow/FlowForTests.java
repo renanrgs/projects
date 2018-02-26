@@ -15,7 +15,7 @@ public class FlowForTests {
 		validFlow.setName("Income");
 		return validFlow;
 	}
-	
+
 	public static FlowDTO flowWithNullName() {
 		FlowDTO flowWithIdOne = new FlowDTO();
 		flowWithIdOne.setName(null);
@@ -42,6 +42,13 @@ public class FlowForTests {
 
 	public static FlowDTO flowWithEmptyName() {
 		return new FlowDTO("");
+	}
+
+	public static FlowDTO expenseFlow() {
+		FlowDTO validFlow = new FlowDTO();
+		validFlow.setId(2);
+		validFlow.setName("Expense");
+		return validFlow;
 	}
 
 }

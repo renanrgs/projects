@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class FinancialMovementCompositePK implements Serializable{
 
+
 	/**
 	 * 
 	 */

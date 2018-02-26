@@ -1,8 +1,11 @@
 package com.budgetplanner.commontests.budget;
 
+import org.junit.Ignore;
+
 import com.budgetplanner.commontests.financialmovement.FinancialMovementForTests;
 import com.budgetplanner.domain.BudgetDTO;
 
+@Ignore
 public class BudgetForTestsService {
 
 	public static BudgetDTO validBudget() {

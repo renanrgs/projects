@@ -15,8 +15,10 @@ public class BudgetServiceImpl implements BudgetService {
 	private BudgetRepository budgetRepository;
 
 	private void validate(BudgetDTO budget) {
-		if (budget == null)
+		if (budget == null) {
+			System.out.println("Passei aqui");
 			throw new IllegalArgumentException();
+		}
 	}
 
 	@Override

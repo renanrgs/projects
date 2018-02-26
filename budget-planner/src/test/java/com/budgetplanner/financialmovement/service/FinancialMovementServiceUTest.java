@@ -29,27 +29,27 @@ public class FinancialMovementServiceUTest {
 	private FinancialMovementService subCategoryService;
 
 	@Test
-	public void addNewValidSubCategoryTest() {
-		subCategoryService.add(rent());
+	public void saveNewValidSubCategoryTest() {
+		subCategoryService.save(rent());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void throwsExceptionWhenAddingNullSubCategory() {
-		subCategoryService.add(nullFinancialMovement());
+	public void throwsExceptionWhensaveingNullSubCategory() {
+		subCategoryService.save(nullFinancialMovement());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void throwsExceptionWhenAddingNullIdAndName() {
-		subCategoryService.add(financialMovementWithNullIdAndName());
+	public void throwsExceptionWhensaveingNullIdAndName() {
+		subCategoryService.save(financialMovementWithNullIdAndName());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void throwsExceptionWhenIdIsLowerThanZero() {
-		subCategoryService.add(financialMovementIdLowerThanZero());
+		subCategoryService.save(financialMovementIdLowerThanZero());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void throwsExceptionWhenIdIsGreaterThan200() {
-		subCategoryService.add(financialMovementWithIdGreaterThan200());
+		subCategoryService.save(financialMovementWithIdGreaterThan200());
 	}
 }

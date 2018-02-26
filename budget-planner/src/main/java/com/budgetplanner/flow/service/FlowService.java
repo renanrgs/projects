@@ -10,4 +10,8 @@ public interface FlowService {
 
 	List<FlowDTO> findAll();
 
+	void deleteAll();
+
+	FlowDTO findById(Integer id);
+
 }

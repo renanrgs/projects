@@ -77,5 +77,16 @@ public class FlowRepositoryUTest {
 		exception.expect(InvalidDataAccessApiUsageException.class);
 		flowRepository.save(nullFlow());
 	}
+	
+	@Test
+	public void deleteAllFlows() {
+		flowRepository.save(twoValidFlow());
+		List<FlowDTO> allFlows = (List<FlowDTO>) flowRepository.findAll();
+		assertThat(allFlows.size(), equalTo(2));
+		flowRepository.deleteAll();
+		allFlows = (List<FlowDTO>) flowRepository.findAll();
+		assertThat(allFlows.size(), equalTo(0));
+
+	}
 
 }

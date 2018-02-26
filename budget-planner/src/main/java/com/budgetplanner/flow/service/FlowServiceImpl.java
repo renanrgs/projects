@@ -31,4 +31,14 @@ public class FlowServiceImpl implements FlowService {
 		Optional.ofNullable(flowDTO.getName()).orElseThrow(IllegalArgumentException::new);
 		Optional.of(flowDTO.getName()).filter((name) -> !name.isEmpty()).orElseThrow(IllegalArgumentException::new);
 	}
+
+	@Override
+	public void deleteAll() {
+		flowRepository.deleteAll();
+	}
+
+	@Override
+	public FlowDTO findById(Integer id) {
+		return flowRepository.findOne(id);
+	}
 }

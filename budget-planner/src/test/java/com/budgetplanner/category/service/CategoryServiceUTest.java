@@ -14,7 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.budgetplanner.commontests.category.CategoryForTests;
+import com.budgetplanner.commontests.flow.FlowForTests;
 import com.budgetplanner.domain.CategoryDTO;
+import com.budgetplanner.flow.service.FlowService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,14 +25,17 @@ public class CategoryServiceUTest {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Autowired
+	private FlowService flowService;
+	
 	@Before
 	public void setUp() {
-		// validFlow = flowRepository.save(FlowForTestsRepository.validFlow());
+		flowService.save(FlowForTests.incomeFlow());
 	}
 
 	@Test
 	public void addNewValidCategory() {
-		CategoryDTO categoryDTO = CategoryForTests.mainJob();
+		CategoryDTO categoryDTO = CategoryForTests.menialJob();
 		assertThat(categoryDTO.getId(), nullValue());
 		categoryService.save(categoryDTO);
 		List<CategoryDTO> categories = categoryService.findAll();
@@ -43,7 +48,7 @@ public class CategoryServiceUTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void givenCategoryWithNullName() {
+	public void givenCategoryWithNullNameTheThrowsException() {
 		categoryService.save(CategoryForTests.categoryWithNullName());
 	}
 

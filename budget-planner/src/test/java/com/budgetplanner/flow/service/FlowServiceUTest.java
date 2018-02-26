@@ -49,4 +49,12 @@ public class FlowServiceUTest {
 		exception.expect(IllegalArgumentException.class);
 		flowService.save(FlowForTests.flowWithEmptyName());
 	}
+	
+	@Test
+	public void deleteAllFlow() {
+		flowService.save(incomeFlow());
+		assertThat(flowService.findAll().size(), equalTo(1));
+		flowService.deleteAll();
+		assertThat(flowService.findAll().size(), equalTo(0));
+	}
 }

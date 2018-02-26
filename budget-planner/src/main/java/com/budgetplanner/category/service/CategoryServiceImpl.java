@@ -31,4 +31,9 @@ public class CategoryServiceImpl implements CategoryService {
 		return (List<CategoryDTO>) categoryRepository.findAll();
 	}
 
+	@Override
+	public CategoryDTO findById(Integer id) {
+		return categoryRepository.findOne(id);
+	}
+
 }
